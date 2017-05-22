@@ -1,0 +1,24 @@
+{
+    "name": "hoppermagic/kobalt",
+    "description": "Scaffold for building simple cms systems",
+    "type": "dunno",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "leigh kayley",
+            "email": "leigh@hoppermagic.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.2",
+        "kris/laravel-form-builder": "^1.8",
+        "intervention/image": "^2.3",
+        "laracasts/flash": "^3.0"
+    },
+    "autoload": {
+    	"psr-4": {
+            "Hoppermagic\\Kobalt\\": "src/"
+        }
+    }
+}
