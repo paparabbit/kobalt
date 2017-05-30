@@ -2,6 +2,8 @@
 
 namespace Hoppermagic\Kobalt\Helpers;
 
+use Hoppermagic\Kobalt\Classes\Transforms;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -110,15 +112,19 @@ class ImageHelper
      * @param $image_meta
      * @param null $ignore_thumbs
      */
-    public function generateThumbs($request, $image_meta, $ignore_thumbs = null)
+    public function generateThumbs($request, Collection $image_meta, $ignore_thumbs = null)
     {
         $files = $request->allFiles();
+
+//        dd($image_meta);
+//        dd('WE FAIL HERE');
 
         foreach($files as $file_name => $file_data) {
 
             foreach($image_meta as $image_name => $thumb_data) {
                 if($file_name == $image_name){
 
+//                    dd($thumb_data);
                     // If a thumb is to be ignored, remove it from the $thumb_data
 
                     if ($ignore_thumbs != null) {
@@ -264,7 +270,7 @@ class ImageHelper
                     }
 
                     $filename_array += [$column_name => $request->$key.'.'.$extension];
-                    
+
 //                    dd($filename_array);
 
                 }
@@ -293,18 +299,28 @@ class ImageHelper
      * @param null $ignore_thumbs
      * @internal param Blogpost $post
      */
-    public function checkImageStatus ($request, $original, $image_meta, $ignore_thumbs = null)
+    public function checkImageStatus ($request, $original, Collection $image_meta, $ignore_thumbs = null)
     {
         $files = $request->allFiles();
 
+//        foreach($image_meta as $meta_name => $thumb_data) {
+//            Log::info('>>META TEST: ' . $meta_name);
+//        }
+////
+//        dd($image_meta);
 
         foreach($image_meta as $meta_name => $thumb_data) {
 
+//            Log::info('>>META NAME ' . $meta_name);
+
             foreach($files as $file_name => $file_data) {
+
+//                Log::info('>>CHECKING FILENAME: ' . $file_name);
 
                 if($file_name == $meta_name) {
 
 //                    dd('>>WE HAVE AN IMAGE CHANGE');
+//                    Log::info('>>WE HAVE AN IMAGE CHANGE ON ' . $file_name);
 
                     // There is an image uploaded for this meta
                     // Delete existing and replace
@@ -312,11 +328,14 @@ class ImageHelper
                     $this->deleteImages($original, $meta_name, $thumb_data);
                     $this->generateThumbs($request, $image_meta, $ignore_thumbs);
 
-                    break 2;
+                    continue 2;
                 }
             }
             // We get here there must be NO image uploaded for this Image meta
 //            dd('>>IF THIS CODE RUNS THERE MUST BE NO IMAGE UPLOADED');
+
+//            dd($thumb_data);
+//            Log::info('>>WE ARE CHECKING FOR A NAME CHANGE' . $meta_name);
 
             $this->checkForNameChanges($request, $original, $meta_name, $thumb_data);
         }
@@ -348,8 +367,10 @@ class ImageHelper
      * @param $file_fieldname
      * @param $thumb_data
      */
-    private function checkForNameChanges($request, $original, $file_fieldname, $thumb_data)
+    private function checkForNameChanges($request, $original, $file_fieldname, Collection $thumb_data)
     {
+//        dd($thumb_data);
+
         $new_image_name = $this->findImageName($request, $file_fieldname);
         $current_image_name = $this->findImageName($original, $file_fieldname);
 
@@ -365,10 +386,11 @@ class ImageHelper
 
             foreach ($thumb_data as $thumb){
 
-                $suffix = array_key_exists('suffix', $thumb) ? $thumb['suffix'] : '';
+//                $suffix = array_key_exists('suffix', $thumb) ? $thumb['suffix'] : '';
+                $suffix = $thumb->has('suffix') ? $thumb->get('suffix') : '';
 
-                $current_image = $thumb['path'] .'/'. $current_image_name. $suffix . '.' . $current_image_ext;
-                $new_image = $thumb['path'] .'/'. $new_image_name. $suffix . '.' . $current_image_ext;
+                $current_image = $thumb->get('path') .'/'. $current_image_name. $suffix . '.' . $current_image_ext;
+                $new_image = $thumb->get('path')  .'/'. $new_image_name. $suffix . '.' . $current_image_ext;
 
                 // If thumbs are ignored its possible $current_image won't exist so need to check first
 
@@ -389,7 +411,7 @@ class ImageHelper
      * @param $thumb_data
      * @return bool
      */
-    private function deleteImages($original, $file_fieldname, $thumb_data)
+    private function deleteImages($original, $file_fieldname, Collection $thumb_data)
     {
 
         $current_image_name = $this->findImageName($original, $file_fieldname);
@@ -402,9 +424,10 @@ class ImageHelper
 
         foreach ($thumb_data as $thumb){
 
-            $suffix = array_key_exists('suffix', $thumb) ? $thumb['suffix'] : '';
+//            $suffix = array_key_exists('suffix', $thumb) ? $thumb['suffix'] : '';
+            $suffix = $thumb->has('suffix') ? $thumb->get('suffix') : '';
 
-            $current_image =  $thumb['path'] .'/'. $current_image_name. $suffix . '.' . $current_image_ext;
+            $current_image =  $thumb->get('path') .'/'. $current_image_name. $suffix . '.' . $current_image_ext;
 
 //            dd($current_image);
             // If thumbs are ignored its possible they won't exist so need to check first
@@ -426,14 +449,19 @@ class ImageHelper
      * @param $name
      * @param $thumb_data
      */
-    private function processThumbs($file, $name, $thumb_data)
+    private function processThumbs($file, $name, Collection $thumb_data) //!TODO GOT TO HERE!!!
     {
+//        dd('>>HERE');
         $extension = $file->getClientOriginalExtension();
+
+//        dd($thumb_data);
 
         $image = Image::make($file->getRealPath());
         $image->backup();
 
         foreach ($thumb_data as $thumb_name => $thumb) {
+
+//            dd($thumb);
 
             $image->reset();
 
@@ -442,38 +470,53 @@ class ImageHelper
 
             // TODO We need to set the meta up using objects
 
-            if(!array_key_exists('suffix', $thumb)){
-                $thumb['suffix'] = null;
-            }
+            //!TODO I dont think we need this as if item at key doesnt exist it reurns null anyway????
+//            if(!$thumb->has('suffix')){
+//                $thumb->put('suffix', null);
+//            }
+
+//            if(!array_key_exists('suffix', $thumb)){
+//                $thumb['suffix'] = null;
+//            }
+
+//            dd($thumb);
+
+//            dd('>>CHASING THROUGH TO HERE!!!!');
 
             // Are there transforms....
 
-            if(array_key_exists('transformations', $thumb)){
+            if($thumb->has('transformations')){
+//            if(array_key_exists('transformations', $thumb)){
 
                 // Loop through and add each transform
 
-                foreach ($thumb['transformations'] as $trans_name => $trans_data) {
+                foreach ($thumb->get('transformations') as $trans_name => $trans_data) {
+
+//                    dd('>>DOING A TRANSFORM');
 
                     $image = $this->addTransformation($image, $trans_name, $trans_data);
 
                     // Lee mawdsley specific - sharpen a touch
-                    $image->sharpen(5);
+//                    $image->sharpen(5);
 //                    dd($thumb['transformations']);
                 }
             }
 
+
+//            dd($thumb->get('path'));
+
             //!TODO FOR MAWDS IMPORT WE CAN CATCH LANDSCAPE AND PORTRAIT AND USE ORIGINALS TOO????
-            if($thumb_name == 'original' || array_key_exists('use-as-is', $thumb) /*|| $thumb_name == 'landscape' || $thumb_name == 'portrait'*/){
+            if($thumb_name == 'original' || $thumb->has('use-as-is')){     //array_key_exists('use-as-is', $thumb) /*|| $thumb_name == 'landscape' || $thumb_name == 'portrait'*/){
 
                 // If its the original, or is specified to 'use-as-is' just move the original file into the folder
                 // if we use intervention it will get compressed
 
-                Storage::put($thumb['path'] .'/'. $name . $thumb['suffix']. '.'. $extension, File::get($file));
+                Storage::put($thumb->get('path') .'/'. $name . $thumb->get('suffix') . '.'. $extension, File::get($file));
 //                Log::info('>> POINT 2: ' . memory_get_usage());
 
             }else{
 
-                Storage::put($thumb['path'] .'/'. $name . $thumb['suffix']. '.'. $extension, (string) $image->encode($extension, 96));
+                Storage::put($thumb->get('path') .'/'. $name . $thumb->get('suffix') . '.'. $extension, (string) $image->encode($extension, 96));
 //                Log::info('>> POINT 3: ' . memory_get_usage());
             }
         }
@@ -496,18 +539,20 @@ class ImageHelper
      */
     private function addTransformation($image, $trans_name, $trans_data)
     {
-        if($trans_name == 'fit'){
+//        dd($trans_name);
+
+        if($trans_name == Transforms::FIT){
 
             $image->fit( $trans_data[0], $trans_data[1] );
         }
 
-        if($trans_name == 'crop'){
+        if($trans_name == Transforms::CROP){
 
             $image->crop( $trans_data[0], $trans_data[1] );
         }
 
 
-        if($trans_name == 'fit-to-box'){
+        if($trans_name == Transforms::FIT_TO_BOX){
 
             if($image->width() > $image->height()){
 
@@ -525,7 +570,7 @@ class ImageHelper
         }
 
 
-        if($trans_name == 'resize'){
+        if($trans_name == Transforms::RESIZE){
 
             $image->resize( $trans_data[0], $trans_data[1], function ($constraint) {
                 $constraint->aspectRatio();
@@ -606,10 +651,10 @@ class ImageHelper
 
         return $name;
     }
-    
-    
-    
-    
+
+
+
+
 
 
 
