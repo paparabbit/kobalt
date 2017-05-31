@@ -13,8 +13,6 @@ class KobaltServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include __DIR__.'/routes.php';
-
         $this->publishes([
             __DIR__.'/resources/assets/adminimg' => public_path(),
             __DIR__.'/resources/assets/admin.css' => public_path('css'),
@@ -29,7 +27,12 @@ class KobaltServiceProvider extends ServiceProvider
      */
     public function register()
     {
-//        $this->app->make('Hoppermagic\Bigwig\Controllers\AdminController');
+        $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltResources');
+        $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltController');
+        $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltModel');
+        $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltForm');
+        $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltRequest');
+
         $this->loadViewsFrom(__DIR__.'/views', 'kobalt');
     }
 }
