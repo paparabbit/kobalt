@@ -1,0 +1,147 @@
+<?php
+
+namespace App;
+
+use Hoppermagic\Kobalt\Classes\Transforms;
+use Hoppermagic\Kobalt\Models\KobaltModel;
+use Illuminate\Support\Facades\Storage;
+
+class {{name}} extends KobaltModel
+{
+    protected $fillable = [
+        'title',
+        'slug',
+    ];
+
+
+    // When serialised need these as integers not string
+
+    protected $casts = [
+        'is_active' => 'integer',
+        'sort_on' => 'integer'
+    ];
+
+
+    // Values will get added to the resources attributes when serialised to Array or JSON
+
+    // protected $appends = ['thumbnail_path'];
+
+
+    // Fields to display on the overview page
+
+    protected static $overview_meta = array(
+        //'ID' => 'id',
+        //'Title' => 'title',
+        //'Slug' => 'slug',
+        //'Active' => 'is_active',
+        //'Sort' => 'sort_on'
+    );
+
+
+
+    // Image sizes we need to process
+
+    protected static $image_meta = array(
+//        'computerimage_file' => array(
+//            'thumbnails' => array(
+//                'original' => array(
+//                    'path' => 'upload/projectfirst/original',
+//                ),
+//                'scaled-retina' => array(
+//                    'path' => 'upload/projectfirst/scaled',
+//                    'suffix' => '@2x'
+//                ),
+//                'scaled' => array(
+//                    'path' => 'upload/projectfirst/scaled',
+//                    'transformations' => array(
+//                        Transforms::RESIZE => array(775, NULL),
+//                    ),
+//                ),
+//                'thumbnail' => array(
+//                    'path' => 'upload/projectfirst/thumbs',
+//                    'transformations' => array(
+//                        Transforms::FIT => array(125, 125),
+//                    ),
+//                )
+//            )
+//        ),
+//        'overviewimage_file' => array(
+//            'thumbnails' => array(
+//                'original' => array(
+//                    'path' => 'upload/projectnav/original',
+//                ),
+//                'thumbnail' => array(
+//                    'path' => 'upload/projectnav/thumbs',
+//                    'transformations' => array(
+//                        Transforms::FIT => array(125, 125),
+//                    ),
+//                )
+//            )
+//        )
+    );
+
+
+
+    /**
+     * Mutators
+     * If the image name is blank (nothing uploaded) set column to NULL
+     * otherwise it will be set to blank '' and that will clash with other blanks
+     *
+     * @param $value
+     */
+//    public function setComputerImageNameAttribute($value)
+//    {
+//        if(empty($value)){
+//            $this->attributes['computerimage_name'] = NULL;
+//        }else{
+//            $this->attributes['computerimage_name'] = $value;
+//        }
+//    }
+
+
+
+    /**
+     * Generates the full path to the XXXXXXX thumbnail using whatever the default storage is
+     *
+     * @return mixed
+     */
+//    public function getComputerimageThumbnailPathAttribute()
+//    {
+//        if (!$this->computerimage){
+//            return null;
+//        }
+//
+//        return Storage::url($this->getImageMeta()->get('computerimage_file')->get('thumbnail')->get('path') . '/' . $this->computerimage);
+//    }
+
+
+
+    /**
+     * Project can have multiple project images
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+//    public function images()
+//    {
+//        return $this->hasMany('App\Projectimage');
+//    }
+
+
+
+    /**
+     * The project can have a single testimonial
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+//    public function testimonial()
+//    {
+//        return $this->hasOne('App\Testimonial');
+//    }
+
+
+
+//    public function getTestimonial()
+//    {
+//        return $this->testimonial;
+//    }
+}

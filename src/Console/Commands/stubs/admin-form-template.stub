@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Forms\Admin;
+
+use Hoppermagic\Kobalt\Services\LaravelFormBuilder\Form;
+
+class {{name}}Form extends Form
+{
+    public function buildForm()
+    {
+        $this
+            ->add('title', 'text', [
+                'label' => 'Project title',
+                'attr' => [
+                    'class' => 'form-control permalink_from'
+                ]
+            ])
+            ->add('slug', 'text', [
+                'label' => 'Slug (this field will auto populate)',
+                'attr' => [
+                    'class' => 'form-control permalink_to'
+                ]
+            ])
+            ->add('gridtype', 'select' ,[
+                'label' => 'Grid',
+                'choices' => [
+                    '1' => 'Grid 1',
+                    '2' => 'Grid 2',
+                    '3' => 'Grid 3'
+                ]
+            ])
+            ->add('text', 'textarea', [
+                'label' => 'Text',
+                'attr' => [
+                    'class' => 'rich-text'
+                ]
+            ])
+            ->add('testimonial', 'select' ,[
+                'label' => 'Testimonial',
+                'choices' => $this->getData('testimonial'),
+                'selected' => $this->getData('testimonial_selected'),
+                'empty_value' => 'Select testimonial'
+            ])
+            ->add('computerimage_name', 'text' ,[
+                'label' => 'Computer image name'
+            ])
+            ->add('computerimage_file', 'file' ,[
+                'label' => 'Computer image  file'
+            ])
+            ->add('computerimage_thumbnail', 'static',[
+                'tag' => 'div',
+                'attr' => [],
+                'value' => $this->getData('computerimage')
+            ])
+            ->add('sort_on', 'hidden' ,[
+                'label' => 'Sort_on',
+                'value' => '1'
+            ])
+            ->add('is_active', 'select' ,[
+                'label' => 'Is active?',
+                'choices' => [
+                    '0' => 'Unpublished',
+                    '1' => 'Published'
+                ]
+            ])
+
+            // Many to many Images
+
+            ->add('imagelist', 'static',[
+                'tag' => 'div',
+                'attr' => [],
+                'value' => $this->getData('nested_image_view')
+            ]);
+    }
+}

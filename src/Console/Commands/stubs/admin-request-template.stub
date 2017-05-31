@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class {{name}}Request extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // When validating an edited project we need to ignore the current item for the uniques
+        // otherwise it tries to check against itself and fails
+        // For a create there is no 'self' so set to null
+
+//        $current_id = isset($this->route('project')->id) ? $this->route('project')->id : null;
+//
+        $rules = [
+//            'title' => 'required|max:127',
+//            'slug' => 'required|max:127|unique:projects,slug,'.$current_id,
+//            'linkurl' => 'max:127',
+//            'computerimage_name' => 'required_with:computerimage_file|max:127|unique:projects,computerimage_name,'.$current_id,
+//            'computerimage_file' => 'image|max:1000',
+        ];
+
+        return $rules;
+    }
+}
