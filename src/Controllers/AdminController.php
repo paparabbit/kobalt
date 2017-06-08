@@ -238,21 +238,8 @@ abstract class AdminController extends Controller
      */
     protected function generateNestedImageView($images, $nested_wildcard)
     {
-//        $image_path = config('imagepaths.'.getenv('IMAGE_PATH').'.url') . $nested_model::getImageMeta()['image_file']['thumbnail']['path'] . '/';
-
         // !TODO if this fails we can just pass in the resource
         // Resource should be the last param....
-
-//        dd('>>here');
-
-//        foreach ($images as $image){
-//            dd($image->thumbnail_path);
-//        }
-
-
-
-
-//        dd($images);
 
         $route_params = app('router')->getCurrentRoute()->parameters;
         $resource = array_last($route_params);
@@ -261,7 +248,6 @@ abstract class AdminController extends Controller
         return view('kobalt::image_overview')->with(
             array(
                 'images' => $images, //!TODO what if theres only one image!!!!!
-//                'image_path' => $image_path,
                 'resource_id' => $resource->id,
                 'addimage_action' => route('admin.' . $nested_wildcard . '.create', $resource), //Todo change this in the view
                 'editimage_path' => $route_helper->getNestedEditPath($nested_wildcard)
