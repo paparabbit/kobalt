@@ -68,11 +68,10 @@ class {{name}}Controller extends AdminController
      */
     public function store({{name}}Request $request)
      {
-         // The column that stores the full image ref eg (rabbit.jpg)
-         // is not passed in the $request so we need to add it
-         //$additional_values = ImageHelper::getNameColumns($request);
+        // Add the extension
+        //$extension_array = ImageHelper::generateExtensionArray($request);
 
-         $resource = $this->storeResource($request /*,$additional_values*/ );
+        $resource = $this->storeResource($request /*,$extension_array*/ );
 
          // Store files after the resource has been saved as we can pull the image meta from the resource
          //$this->storeFiles($request, $resource);
@@ -131,9 +130,9 @@ class {{name}}Controller extends AdminController
     {
         //$this->updateStoredFiles($request, ${{resource}});
 
-        //$additional_values = ImageHelper::getUpdatedNameColumns(${{resource}}, $request); // Pass in project and search the attributes
+        //$extension_array = ImageHelper::generateExtensionArray($request);
 
-        $resource = $this->updateResource(${{resource}}, $request /*, $additional_values*/);
+        $resource = $this->updateResource(${{resource}}, $request /*, $extension_array*/);
 
         return redirect()->route('admin.XXXXXXXX.edit', $resource);
     }
