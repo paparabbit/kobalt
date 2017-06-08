@@ -2,12 +2,12 @@
 
 namespace Hoppermagic\Kobalt\Controllers;
 
-use App\Http\Controllers\Controller; // I guess we just have to assume this will exist?
+use App\Http\Controllers\Controller;
 use Hoppermagic\Kobalt\Services\LaravelFormBuilder\Form;
 use Hoppermagic\Kobalt\Helpers\FormHelper;
 use Hoppermagic\Kobalt\Helpers\ImageHelper;
 use Hoppermagic\Kobalt\Helpers\RouteHelper;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 
 abstract class AdminController extends Controller
@@ -30,7 +30,6 @@ abstract class AdminController extends Controller
     {
         $model = $this->model;
 
-//        dd('>> We got this far');
         $route_helper = new RouteHelper();
 
         return view('kobalt::overview')->with([
@@ -38,7 +37,7 @@ abstract class AdminController extends Controller
             'create_path' => $route_helper->getNamedRoute('create'),
             'edit_path' => "/" . app('router')->getCurrentRoute()->uri,
             'title' => $this->title,
-            'meta' => $model::getOverviewMeta() //!TODO interface make sure our models have a GOM()
+            'meta' => $model::getOverviewMeta()
         ]);
     }
 
@@ -66,24 +65,25 @@ abstract class AdminController extends Controller
     }
 
 
+    //!TODO should this be a helper class??
 
     /**
      * Stores any files that have been uploaded with the form
+     * We store the files after the resource has been saved as we can access image_meta from the resource
      * !TODO need to handle stuff other than images
      *
      * @param $request
+     * @param $resource
      */
-    protected function storeFiles($request)
+    protected function storeFiles($request, $resource)
     {
-        $model = $this->model;
-        $image_helper = new ImageHelper();
-
         if($request->allFiles()){
             //!TODO make sure they are images
+            $image_helper = new ImageHelper();
 
             $ignore_thumbs = $this->generateIgnoreList($request);
 
-            $image_helper->generateThumbs($request, $model::getImageMeta(), $ignore_thumbs); //!TODO interface make sure our models have a GOM()
+            $image_helper->generateThumbs($request, $resource->getImageMeta(), $ignore_thumbs);
         }
     }
 
@@ -91,19 +91,17 @@ abstract class AdminController extends Controller
 
     /**
      * Updates any stored files if they are re-uploaded
-     * !TODO We could use this to generate the updated column names?????
      *
      * @param $request
      * @param $resource
      */
     protected function updateStoredFiles($request, $resource)
     {
-        $model = $this->model;
         $image_helper = new ImageHelper();
 
         $ignore_thumbs = $this->generateIgnoreList($request);
 
-        $image_helper->checkImageStatus($request, $resource, $model::getImageMeta(), $ignore_thumbs);
+        $image_helper->checkImageStatus($request, $resource, $ignore_thumbs); //!TODO this is a LOT of stuff to pass through....
     }
 
 
@@ -121,8 +119,6 @@ abstract class AdminController extends Controller
         $model = $this->model;
 
         $resource = $model::create(array_merge($request->all(), $additional_data));
-
-//        dd('>>saved it');
 
         $this->showCreatedMessage();
 
