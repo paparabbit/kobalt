@@ -1,6 +1,6 @@
 {
     "name": "hoppermagic/kobalt",
-    "description": "Scaffold for building simple admin sections",
+    "description": "Scaffold for building simple admin areas for Laravel",
     "type": "dunno",
     "license": "mit",
     "authors": [
