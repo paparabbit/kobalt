@@ -13,11 +13,18 @@ class KobaltServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Default assets to publish
         $this->publishes([
             __DIR__.'/resources/assets/adminimg' => public_path(),
             __DIR__.'/resources/assets/admin.css' => public_path('css'),
             __DIR__.'/resources/assets/admin.js' => public_path('js'),
-        ], 'public');
+            __DIR__.'/views/partials/nav.blade.php' => resource_path('views/hoppermagic/kobalt/partials'),
+        ], 'default');
+
+        // Publish all admin views
+        $this->publishes([
+            __DIR__.'/views' => resource_path('views/hoppermagic/kobalt'),
+        ], 'admin-views');
     }
 
     /**
