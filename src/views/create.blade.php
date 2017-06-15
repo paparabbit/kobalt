@@ -1,17 +1,17 @@
-@extends('admin.admin_template')
+@extends('kobalt::admin_template')
 
 @section('content')
 
     <div class="container">
 
-        @include('admin.partials.breadcrumb', [
+        @include('kobalt::partials.breadcrumb', [
             'depth' => 2,
             'button_text' => 'Add'
         ])
 
         <div id="lb_content">
 
-            @include('admin.partials.page_header', ['title_text' => 'Add'])
+            @include('kobalt::partials.page_header', ['title_text' => 'Add'])
 
             {!! form_start($create_form) !!}
             {!! form_until($create_form, 'save_field', false, false) !!}

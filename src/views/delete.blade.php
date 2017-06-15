@@ -1,17 +1,17 @@
-@extends('admin.admin_template')
+@extends('kobalt::admin_template')
 
 @section('content')
 
     <div class="container delete">
 
-        @include('admin.partials.breadcrumb', [
+        @include('kobalt::partials.breadcrumb', [
             'depth' => 2,
             'button_text' => 'Delete'
         ])
 
         <div id="lb_content">
 
-            @include('admin.partials.page_header', ['title_text' => 'Delete'])
+            @include('kobalt::partials.page_header', ['title_text' => 'Delete'])
 
             <div class="row">
             <div class="col-md-12 ">

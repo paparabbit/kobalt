@@ -25,6 +25,15 @@ class KobaltServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/views' => resource_path('views/hoppermagic/kobalt'),
         ], 'admin-views');
+
+
+        // Push $active into the admin navigation view
+        //!TODO not sure if this is a good idea or whether it would be better to set this in the main project
+        //!TODO need to check this still works on publish
+        view()->composer('kobalt::partials.nav', function ($view) {
+            $active = \Request::segment(2);
+            $view->with('active', $active);
+        });
     }
 
     /**

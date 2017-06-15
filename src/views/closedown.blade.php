@@ -1,4 +1,4 @@
-@extends('admin.admin_template')
+@extends('kobalt::admin_template')
 
 @section('scripts')
 

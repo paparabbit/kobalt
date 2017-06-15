@@ -35,7 +35,7 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                @include('partials.nav')
+                @include('kobalt::partials.nav')
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

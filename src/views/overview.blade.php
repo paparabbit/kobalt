@@ -1,10 +1,10 @@
-@extends('admin.admin_template')
+@extends('kobalt::admin_template')
 
 @section('content')
 
     <div class="container">
 
-        @include('admin.partials.breadcrumb', [
+        @include('kobalt::partials.breadcrumb', [
             'depth' => 1,
             'title' => $title
         ])
