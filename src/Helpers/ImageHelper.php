@@ -2,6 +2,7 @@
 
 namespace Hoppermagic\Kobalt\Helpers;
 
+use Exception;
 use Hoppermagic\Kobalt\Classes\Transforms;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
@@ -182,7 +183,7 @@ class ImageHelper
             $current_name = $this->findImageName($original, $meta_name);
             $current_ext = $this->findExtension($original, $meta_name);
 
-            if($new_name != $current_name){
+            if($new_name != $current_name && $new_name !== null){
 
                 $this->changeThumbnailName($current_name, $current_ext, $new_name, $thumb_data);
             }
@@ -363,6 +364,7 @@ class ImageHelper
      * @param Request $request
      * @param $name
      * @return string
+     * @throws Exception
      */
     private function findImageName($request, $name)
     {
@@ -372,10 +374,6 @@ class ImageHelper
 
         $split_name = explode('_', $name);
         $name = $split_name[0] . '_name';
-
-        if(!isset($request->$name)){
-            throw new Exception("Name is not set on finsImageName");
-        }
 
         return $request->$name;
     }
@@ -387,6 +385,7 @@ class ImageHelper
      *
      * @param $name
      * @return string
+     * @throws Exception
      */
     private function findExtensionColumn($name)
     {
