@@ -10,9 +10,12 @@ use Hoppermagic\Kobalt\Facades\FormHelper;
 use Hoppermagic\Kobalt\Facades\ImageHelper;
 use Hoppermagic\Kobalt\Facades\KobaltStorage;
 
+//use Hoppermagic\Kobalt\ImageGalleryTrait;
+
 
 class {{name}}Controller extends AdminController
 {
+//    use ImageGalleryTrait;
     /**
      * ProjectsController constructor.
      */
@@ -166,11 +169,26 @@ class {{name}}Controller extends AdminController
 
 
 
-    /**
-     * Triggered by ajax called when sorting the images
-     */
-    //public function imageGallerySort()
-    //{
-        //return $this->sortImages(Projectimage::class);
-    //}
+    //    /**
+    //     * AJAX call when sorting the images
+    //     */
+    //    public function imageGallerySort()
+    //    {
+    //        $ids = $_POST['ids'];
+    //
+    //        return $this->sortImages(Projectimage::class, $ids);
+    //    }
+    //
+    //
+    //
+    //    /**
+    //     * AJAX call when lightbox has closed and we need to refresh
+    //     * the image grid
+    //     */
+    //    public function imageGalleryLoad()
+    //    {
+    //        $id = $_POST['resource_id'];
+    //
+    //        return $this->loadImages(Project::class, 'images', $id);
+    //    }
 }
