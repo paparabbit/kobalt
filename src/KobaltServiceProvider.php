@@ -18,7 +18,7 @@ class KobaltServiceProvider extends ServiceProvider
             __DIR__.'/resources/assets/adminimg' => public_path('adminimg'),
             __DIR__.'/resources/assets/admin.css' => public_path('css/admin.css'),
             __DIR__.'/resources/assets/admin.js' => public_path('js/admin.js'),
-            __DIR__.'/views/partials' => resource_path('views/vendor/hoppermagic'),
+            __DIR__.'/views/partials' => resource_path('views/vendor/kobalt/partials'),
         ], 'default');
 
         // Publish all admin views
