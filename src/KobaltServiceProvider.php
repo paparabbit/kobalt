@@ -15,7 +15,7 @@ class KobaltServiceProvider extends ServiceProvider
     {
         // Default assets to publish
         $this->publishes([
-            __DIR__.'/resources/assets/adminimg' => public_path(),
+            __DIR__.'/resources/assets/adminimg' => public_path('adminimg'),
             __DIR__.'/resources/assets/admin.css' => public_path('css'),
             __DIR__.'/resources/assets/admin.js' => public_path('js'),
             __DIR__.'/views/partials/nav.blade.php' => resource_path('views/hoppermagic/kobalt/partials'),
