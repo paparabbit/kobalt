@@ -8,6 +8,7 @@ use App\{{name}};
 use Hoppermagic\Kobalt\Controllers\AdminController;
 use Hoppermagic\Kobalt\Facades\FormHelper;
 use Hoppermagic\Kobalt\Facades\ImageHelper;
+use Hoppermagic\Kobalt\Facades\KobaltStorage;
 
 
 class {{name}}Controller extends AdminController
@@ -55,7 +56,7 @@ class {{name}}Controller extends AdminController
             )
         );
 
-        return $this->showCreateView($create_form);
+        return $this->getCreateView($create_form);
     }
 
 
@@ -74,7 +75,7 @@ class {{name}}Controller extends AdminController
         $resource = $this->storeResource($request /*,$extension_array*/ );
 
          // Store files after the resource has been saved as we can pull the image meta from the resource
-         //$this->storeFiles($request, $resource);
+         //KobaltStorage::storeImages($request, $resource);
 
          return redirect()->route('admin.XXXXXXXXX.edit', $resource);
     }
@@ -114,7 +115,7 @@ class {{name}}Controller extends AdminController
         )/*+ $image_preview_array*/);
 
 
-        return $this->showEditView($edit_form);
+        return $this->getEditView($edit_form);
     }
 
 
@@ -128,7 +129,7 @@ class {{name}}Controller extends AdminController
      */
     public function update({{name}} ${{resource}}, {{name}}Request $request)
     {
-        //$this->updateStoredFiles($request, ${{resource}});
+        //KobaltStorage::updateStoredImages($request, $project, $this->generateIgnoreList($request));
 
         //$extension_array = ImageHelper::generateExtensionArray($request);
 
@@ -146,7 +147,7 @@ class {{name}}Controller extends AdminController
      */
     public function confirmDelete(){
 
-        return $this->showConfirmDeleteView();
+        return $this->getConfirmDeleteView();
     }
 
 

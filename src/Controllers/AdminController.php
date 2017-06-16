@@ -49,7 +49,7 @@ abstract class AdminController extends Controller
      * @param Form $create_form
      * @return $this
      */
-    protected function showCreateView(Form $create_form)
+    protected function getCreateView(Form $create_form)
     {
         $create_form->add('save_field', 'submit', [
             'label' => 'Save ' . $this->title,
@@ -62,46 +62,6 @@ abstract class AdminController extends Controller
             'back_title' => $this->back_title,
             'create_form' => $create_form
         ]);
-    }
-
-
-    //!TODO should this be a helper class??
-
-    /**
-     * Stores any files that have been uploaded with the form
-     * We store the files after the resource has been saved as we can access image_meta from the resource
-     * !TODO need to handle stuff other than images
-     *
-     * @param $request
-     * @param $resource
-     */
-    protected function storeFiles($request, $resource)
-    {
-        if($request->allFiles()){
-            //!TODO make sure they are images
-            $image_helper = new ImageHelper();
-
-            $ignore_thumbs = $this->generateIgnoreList($request);
-
-            $image_helper->generateThumbs($request, $resource->getImageMeta(), $ignore_thumbs);
-        }
-    }
-
-
-
-    /**
-     * Updates any stored files if they are re-uploaded
-     *
-     * @param $request
-     * @param $resource
-     */
-    protected function updateStoredFiles($request, $resource)
-    {
-        $image_helper = new ImageHelper();
-
-        $ignore_thumbs = $this->generateIgnoreList($request);
-
-        $image_helper->checkImageStatus($request, $resource, $ignore_thumbs); //!TODO this is a LOT of stuff to pass through....
     }
 
 
@@ -144,7 +104,7 @@ abstract class AdminController extends Controller
      * @param $edit_form
      * @return $this
      */
-    protected function showEditView($edit_form)
+    protected function getEditView($edit_form)
     {
         $route_params = app('router')->getCurrentRoute()->parameters;
         $route_helper = new RouteHelper();
@@ -203,7 +163,7 @@ abstract class AdminController extends Controller
      *
      * @return $this
      */
-    protected function showConfirmDeleteView()
+    protected function getConfirmDeleteView()
     {
         // Gets the resource through the current route, could just pass it in if needs be
         $route_params = app('router')->getCurrentRoute()->parameters;
