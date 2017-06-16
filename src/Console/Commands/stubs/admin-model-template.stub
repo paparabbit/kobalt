@@ -3,11 +3,14 @@
 namespace App;
 
 use Hoppermagic\Kobalt\Classes\Transforms;
-use Hoppermagic\Kobalt\Models\KobaltModel;
+use Hoppermagic\Kobalt\ImageMetaTrait;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class {{name}} extends KobaltModel
+class {{name}} extends Model
 {
+//  use ImageMetaTrait;
+
     protected $fillable = [
         'title',
         'slug',
@@ -25,6 +28,13 @@ class {{name}} extends KobaltModel
     // Values will get added to the resources attributes when serialised to Array or JSON
 
     // protected $appends = ['thumbnail_path'];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Meta
+    |--------------------------------------------------------------------------
+    */
 
 
     // Fields to display on the overview page
@@ -81,9 +91,36 @@ class {{name}} extends KobaltModel
     );
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+
+
+
+//    public static function getOverviewMeta()
+//    {
+//        return static::$overview_meta;
+//    }
+//
+//
+//
+//    public function getImageMeta()
+//    {
+//        return $this->getImageMetaAsCollection(static::$image_meta);
+//    }
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+
 
     /**
-     * Mutators
      * If the image name is blank (nothing uploaded) set column to NULL
      * otherwise it will be set to blank '' and that will clash with other blanks
      *
@@ -113,6 +150,14 @@ class {{name}} extends KobaltModel
 //
 //        return Storage::url($this->getImageMeta()->get('computerimage_file')->get('thumbnail')->get('path') . '/' . $this->computerimage);
 //    }
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
 
 
