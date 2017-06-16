@@ -221,7 +221,7 @@ abstract class AdminController extends Controller
      * Triggered by ajax called when lightbox has closed and we need to refresh
      * the image grid
      */
-    protected function imageLoad()
+    protected function imageGalleryLoad()
     {
         $model = $this->model;
 

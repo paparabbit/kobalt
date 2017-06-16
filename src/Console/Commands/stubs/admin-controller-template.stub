@@ -169,7 +169,7 @@ class {{name}}Controller extends AdminController
     /**
      * Triggered by ajax called when sorting the images
      */
-    //public function imageSort()
+    //public function imageGallerySort()
     //{
         //return $this->sortImages(Projectimage::class);
     //}
