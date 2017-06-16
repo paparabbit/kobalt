@@ -37,6 +37,8 @@ class KobaltServiceProvider extends ServiceProvider
         });
     }
 
+
+
     /**
      * Register the application services.
      *
@@ -51,10 +53,12 @@ class KobaltServiceProvider extends ServiceProvider
         $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltRequest');
 
         $this->registerFlashIfNeeded();
-//        $this->registerFormIfNeeded();
+        $this->registerInterventionIfNeeded();
+        $this->registerFormBuilderIfNeeded();
 
         $this->loadViewsFrom(__DIR__.'/views', 'kobalt');
     }
+
 
 
     /**
@@ -64,24 +68,60 @@ class KobaltServiceProvider extends ServiceProvider
     {
         if(!$this->app->offsetExists('flash')) {
 
-            $this->app->bind(
-                'Laracasts\Flash\SessionStore',
-                'Laracasts\Flash\LaravelSessionStore'
+            $this->app->register('Laracasts\Flash\FlashServiceProvider');
+        }
+
+        if (!$this->aliasExists('Flash')) {
+
+            AliasLoader::getInstance()->alias(
+                'Flash',
+                'Laracasts\Flash\Flash'
             );
-
-            $this->app->singleton('flash', function () {
-                return $this->app->make('Laracasts\Flash\FlashNotifier');
-            });
-
-            if (!$this->aliasExists('Flash')) {
-
-                AliasLoader::getInstance()->alias(
-                    'Flash',
-                    'Laracasts\Flash\Flash'
-                );
-            }
         }
     }
+
+
+
+    /**
+     * Add intervention image to the container if its not there
+     */
+    private function registerInterventionIfNeeded()
+    {
+        if(!$this->app->offsetExists('Image')) {
+
+            $this->app->register('Intervention\Image\ImageServiceProvider');
+        }
+
+        if (!$this->aliasExists('Image')) {
+
+            AliasLoader::getInstance()->alias(
+                'Image',
+                'Intervention\Image\Facades\Image'
+            );
+        }
+    }
+
+
+
+    /**
+     * Add form builder to the container if its not there
+     */
+    private function registerFormBuilderIfNeeded()
+    {
+        if(!$this->app->offsetExists('FormBuilder')) {
+
+            $this->app->register('Kris\LaravelFormBuilder\FormBuilderServiceProvider');
+        }
+
+        if (!$this->aliasExists('FormBuilder')) {
+
+            AliasLoader::getInstance()->alias(
+                'FormBuilder',
+                'Kris\LaravelFormBuilder\Facades\FormBuilder'
+            );
+        }
+    }
+
 
 
     /**
