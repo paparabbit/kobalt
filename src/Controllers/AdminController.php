@@ -285,7 +285,7 @@ abstract class AdminController extends Controller
      * @param $request
      * @return null
      */
-    protected function generateIgnoreList($request)
+    protected function generateThumbnailIgnoreList($request)
     {
         return null;
     }
