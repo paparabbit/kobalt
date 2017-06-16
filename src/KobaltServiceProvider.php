@@ -2,6 +2,7 @@
 
 namespace Hoppermagic\Kobalt;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class KobaltServiceProvider extends ServiceProvider
@@ -49,6 +50,48 @@ class KobaltServiceProvider extends ServiceProvider
         $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltForm');
         $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltRequest');
 
+        $this->registerFlashIfNeeded();
+//        $this->registerFormIfNeeded();
+
         $this->loadViewsFrom(__DIR__.'/views', 'kobalt');
+    }
+
+
+    /**
+     * Add Flash to the container if its not there
+     */
+    private function registerFlashIfNeeded()
+    {
+        if(!$this->app->offsetExists('flash')) {
+
+            $this->app->bind(
+                'Laracasts\Flash\SessionStore',
+                'Laracasts\Flash\LaravelSessionStore'
+            );
+
+            $this->app->singleton('flash', function () {
+                return $this->app->make('Laracasts\Flash\FlashNotifier');
+            });
+
+            if (!$this->aliasExists('Flash')) {
+
+                AliasLoader::getInstance()->alias(
+                    'Flash',
+                    'Laracasts\Flash\Flash'
+                );
+            }
+        }
+    }
+
+
+    /**
+     * Check if an alias already exists in the IOC.
+     *
+     * @param string $alias
+     * @return bool
+     */
+    private function aliasExists($alias)
+    {
+        return array_key_exists($alias, AliasLoader::getInstance()->getAliases());
     }
 }
