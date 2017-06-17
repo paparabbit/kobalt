@@ -28,8 +28,6 @@ abstract class AdminController extends Controller
      */
     protected function getOverviewView(Collection $collection)
     {
-        $model = $this->model;
-
         $route_helper = new RouteHelper();
 
         return view('kobalt::overview')->with([
@@ -37,7 +35,7 @@ abstract class AdminController extends Controller
             'create_path' => $route_helper->getNamedRoute('create'),
             'edit_path' => "/" . app('router')->getCurrentRoute()->uri,
             'title' => $this->title,
-            'meta' => $model::getOverviewMeta()
+            'meta' => $this->model->getOverviewMeta()
         ]);
     }
 
@@ -76,9 +74,7 @@ abstract class AdminController extends Controller
      */
     protected function storeResource($request, Array $additional_data = null)
     {
-        $model = $this->model;
-
-        $resource = $model::create(array_merge($request->all(), $additional_data));
+        $resource = $this->model->create(array_merge($request->all(), $additional_data));
 
         $this->showCreatedMessage();
 
@@ -194,15 +190,13 @@ abstract class AdminController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function overviewSort(){
-
-        $model = $this->model;
-
+    protected function overviewSort()
+    {
         $ids = explode(',', ($_POST['ids']));
 
         foreach ($ids as $index => $id) {
 
-            $resource = $model::find($id);
+            $resource = $this->model->find($id);
             $resource->sort_on = $index;
             $resource->save();
         }

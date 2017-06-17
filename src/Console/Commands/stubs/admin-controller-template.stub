@@ -19,12 +19,12 @@ class {{name}}Controller extends AdminController
     /**
      * ProjectsController constructor.
      */
-    public function __construct()
+    public function __construct({{name}} {{name}})
     {
         $this->middleware('auth');
         $this->back_link = route('admin.XXXXXXXX.index');
         $this->title = '{{name}}';
-        $this->model = {{name}}::class;
+        $this->model = ${{name}};
         $this->form_class = {{name}}Form::class;
     }
 
@@ -78,7 +78,7 @@ class {{name}}Controller extends AdminController
         $resource = $this->storeResource($request /*,$extension_array*/ );
 
          // Store files after the resource has been saved as we can pull the image meta from the resource
-         //KobaltStorage::storeImages($request, $resource);
+         //KobaltStorage::storeImages($request, $resource, $this->generateThumbnailIgnoreList($request));
 
          return redirect()->route('admin.XXXXXXXXX.edit', $resource);
     }
