@@ -2,10 +2,12 @@
 
 namespace Hoppermagic\Kobalt\Helpers;
 
-use Kris\LaravelFormBuilder\Facades\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class FormHelper
 {
+    use FormBuilderTrait;
+
     /**
      * Generates the create form
      * For many to many's eg Images Belonging to a Project we need to pass through the current resource
@@ -20,7 +22,7 @@ class FormHelper
         $route_params = app('router')->getCurrentRoute()->parameters;
         $route_helper = new RouteHelper();
 
-        $create_form = FormBuilder::create($form_class,[
+        $create_form = $this->form($form_class,[
             'method' => 'POST',
             'url' => $route_helper->getNamedRoute('store', $route_params)
         ],$data);
@@ -50,7 +52,7 @@ class FormHelper
         $resource = array_last($route_params);
         $route_helper = new RouteHelper();
 
-        $edit_form = FormBuilder::create($form_class,[
+        $edit_form = $this->form($form_class,[
             'method' => 'PATCH',
             'model' => $resource,
             'url' => $route_helper->getNamedRoute('update', $route_params)
@@ -64,16 +66,15 @@ class FormHelper
     }
 
 
-
     /**
      * Delete button needs to be wrapped by form, this generates the form and button
      * @param $resource
      * @param $delete_route
-     * @return
+     * @return \Kris\LaravelFormBuilder\Form
      */
     public function generateDeleteForm($resource, $delete_route){
 
-        $delete_form = \FormBuilder::plain([
+        $delete_form = $this->plain([
             'method' => 'DELETE',
             'id' => 'delete_form',
             'model' => $resource,
