@@ -6,10 +6,11 @@ use App\Http\Forms\Admin\{{name}}Form;
 use App\Http\Requests\{{name}}Request;
 use App\{{name}};
 use Hoppermagic\Kobalt\Controllers\AdminController;
-use Hoppermagic\Kobalt\Facades\FormHelper;
+
 use Hoppermagic\Kobalt\Facades\ImageHelper;
 use Hoppermagic\Kobalt\Facades\KobaltStorage;
 
+use Hoppermagic\Kobalt\Helpers\FormHelper;
 //use Hoppermagic\Kobalt\ImageGalleryTrait;
 
 
@@ -18,13 +19,17 @@ class {{name}}Controller extends AdminController
 //    use ImageGalleryTrait;
     /**
      * ProjectsController constructor.
+     * @param FormHelper $form_helper
+     * @param {{name}} ${{resource}}
      */
-    public function __construct({{name}} {{name}})
+    public function __construct(FormHelper $form_helper, {{name}} ${{resource}})
     {
         $this->middleware('auth');
+
         $this->back_link = route('admin.XXXXXXXX.index');
         $this->title = '{{name}}';
-        $this->model = ${{name}};
+        $this->model = ${{resource}};
+        $this->form_helper = $form_helper;
         $this->form_class = {{name}}Form::class;
     }
 
@@ -51,7 +56,7 @@ class {{name}}Controller extends AdminController
      */
     public function create()
     {
-        $create_form = FormHelper::generateCreateForm($this->form_class,
+        $create_form = $this->form_helper->generateCreateForm($this->form_class,
             array(
                 // Data for nested views
             ),array(
@@ -109,7 +114,7 @@ class {{name}}Controller extends AdminController
         //$nested_image_view =  $this->generateNestedImageView($images, 'workimage');
 
 
-        $edit_form = FormHelper::generateEditForm($this->form_class, array(
+        $edit_form = $this->form_helper->generateEditForm($this->form_class, array(
             // Data for the has one
             //'testimonial' => Testimonials::pluck('name','id')->toArray(),
             //'testimonial_selected' => ${{resource}}->getTestimonial(),

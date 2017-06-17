@@ -16,6 +16,7 @@ abstract class AdminController extends Controller
     protected $back_link;
     protected $back_title = '';
     protected $model;
+    protected $form_helper;
     protected $form_class;
     protected $deletable;
 
@@ -165,10 +166,9 @@ abstract class AdminController extends Controller
         $route_params = app('router')->getCurrentRoute()->parameters;
         $resource = array_last($route_params);
 
-        $form_helper = new FormHelper();
         $route_helper = new RouteHelper();
 
-        $delete_form = $form_helper->generateDeleteForm(
+        $delete_form = $this->form_helper->generateDeleteForm(
             $resource,
             $route_helper->getNamedRoute('destroy', $route_params)
         );
