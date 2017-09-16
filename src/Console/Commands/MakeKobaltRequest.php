@@ -41,7 +41,7 @@ class MakeKobaltRequest extends GeneratorCommand
      *
      * @return bool|null
      */
-    public function fire()
+    public function handle()
     {
         $name = $this->getNameInput() . 'Request';
 

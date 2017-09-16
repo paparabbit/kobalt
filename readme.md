@@ -8,6 +8,9 @@ Hoppermagic\Kobalt\KobaltServiceProvider::class
 ````
 Package will automatically add the following but you might want to add these in config.app
 ````
+// Might need to add tinker too
+Laravel\Tinker\TinkerServiceProvider::class,
+
 Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
 Laracasts\Flash\FlashServiceProvider::class,
 Intervention\Image\ImageServiceProvider::class,
@@ -29,6 +32,8 @@ php artisan migrate
 Register yourself, disable the auth routes in web.php
 
 Add the non-registration routes from Router.php (auth method) to web.php
+
+Remember to comment out the Auth::routes()
 
 app.blade.php also contains a reference to the register route, so need to comment out
 
@@ -147,10 +152,9 @@ app.blade.php
 
 **View Composer**
 
-KobaltServiceProvider makes sure the active variable is available in the admin nav partial
+FYI, KobaltServiceProvider makes sure the active variable is available in the admin nav partial, its pushing in
+segment(2) so make sure this is what you want. Undecided if this is a good thing.
  
- //!TODO is this a good idea?
-
 **Publish assets** 
 
 admin js,
