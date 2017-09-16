@@ -73,7 +73,7 @@ abstract class AdminController extends Controller
      * @param array $additional_data
      * @return mixed
      */
-    protected function storeResource($request, Array $additional_data = null)
+    protected function storeResource($request, Array $additional_data = [])
     {
         $resource = $this->model->create(array_merge($request->all(), $additional_data));
 
