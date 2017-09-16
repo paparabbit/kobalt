@@ -144,7 +144,7 @@ abstract class AdminController extends Controller
      * @param array $additional_values
      * @return mixed
      */
-    protected function updateResource($resource, $request, Array $additional_values = null)
+    protected function updateResource($resource, $request, Array $additional_values = [])
     {
         $resource->update(array_merge($request->all(), $additional_values));
 
