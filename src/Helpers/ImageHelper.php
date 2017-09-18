@@ -11,6 +11,8 @@ use Intervention\Image\Facades\Image;
 
 class ImageHelper
 {
+    private $resource;
+
     /**
      * Generates an array of images and a preview view in the form of
      * [computerimage => view,]
@@ -83,18 +85,20 @@ class ImageHelper
     */
 
 
-
     /**
      * Generates the requested thumbnails based on supplied meta
      * option to ignore particular thumbs/sizes when creating thumbs
      *
      * @param Request $request
-     * @param $image_meta
+     * @param $resource
      * @param null $ignore_thumbs
+     * @internal param $image_meta
      */
-    public function generateThumbs($request, Collection $image_meta, $ignore_thumbs = null)
+    public function generateThumbs($request, $resource, $ignore_thumbs = null)
     {
         $files = $request->allFiles();
+        $image_meta = $resource->getImageMeta();
+        $this->resource = $resource;
 
         foreach($files as $file_name => $file_data) {
 
@@ -356,26 +360,33 @@ class ImageHelper
     }
 
 
-
     /**
      * We need to rename the image, but to what?
      * Try and find a 'name' field within the submitted data that matches the filename
+     * $data will be a Request object or a Collection
      *
-     * @param Request $request
+     * @param $data
      * @param $name
      * @return string
      * @throws Exception
      */
-    private function findImageName($request, $name)
+    private function findImageName($data, $name)
     {
         if(strpos($name, '_') === FALSE){
             throw new Exception("Naming conventions problem on findImageName");
         }
 
         $split_name = explode('_', $name);
-        $name = $split_name[0] . '_name';
+        $field_name = $split_name[0] . '_name';
 
-        return $request->$name;
+        $file_name = $data->$field_name;
+
+        // If theres no image included use the one on the resource
+        if($file_name == ''){
+            return $this->resource->$field_name;
+        }
+
+        return $file_name;
     }
 
 

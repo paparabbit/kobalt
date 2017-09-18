@@ -37,7 +37,7 @@ class KobaltStorage
             //!TODO make sure they are images
             $image_helper = new ImageHelper();
 
-            $image_helper->generateThumbs($request, $resource->getImageMeta(), $ignore_thumbs);
+            $image_helper->generateThumbs($request, $resource, $ignore_thumbs);
         }
     }
 }
