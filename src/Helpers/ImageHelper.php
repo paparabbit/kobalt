@@ -175,7 +175,7 @@ class ImageHelper
                     // Delete existing and generate thumbs for the new
 
                     $this->deleteImages($original, $meta_name, $thumb_data);
-                    $this->generateThumbs($request, $image_meta, $ignore_thumbs);
+                    $this->generateThumbs($request, $original, $ignore_thumbs);
 
                     continue 2;
                 }
