@@ -32637,6 +32637,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.sortBy(a, function (el) {
+                console.log(el[column]);
                 return el[column];
             });
         },
