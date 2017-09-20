@@ -56395,7 +56395,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('table', {
-    staticClass: "table table-bordered table-striped list-page"
+    staticClass: "table table-bordered table-striped list-page rabbit"
   }, [_c('thead', [_c('tr', [_vm._l((_vm.decodedMeta), function(meta, key) {
     return _c('th', [_vm._v(_vm._s(key))])
   }), _vm._v(" "), _c('th')], 2)]), _vm._v(" "), _c('draggable', {
