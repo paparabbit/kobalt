@@ -15,7 +15,7 @@
 <script>
     import draggable from 'vuedraggable';
     import _ from 'lodash';
-    
+
     export default{
 
          props: ['list', 'meta', 'edit_path', 'sort_column'],
@@ -61,7 +61,6 @@
 
                     }else if(_.includes(this.decodeMetaFunc(), 'published_at')){
                         // Theres a 'date' field
-                        console.log('>>WE CAUGHT IT');
                         column = 'published_at';
 
                     }else{
@@ -73,13 +72,19 @@
                     column = this.sort_column;
                 }
 
-                return _.sortBy(a, function(el){
+                let sorted = _.sortBy(a, function(el){
                     return el[column];
-                })
+                });
+
+                // !TODO Dates go the other way to laravel-magic-two???
+                if( column == 'published_at'){
+                    return _.reverse(sorted);
+                }
+
+                return sorted;
             },
 
             decodeMetaFunc(){
-                console.log('>>DMF');
                 return JSON.parse(this.meta);
             },
 

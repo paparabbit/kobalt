@@ -32636,7 +32636,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             var sorted = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.sortBy(a, function (el) {
-                console.log(el[column]);
                 return el[column];
             });
 
@@ -32648,7 +32647,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return sorted;
         },
         decodeMetaFunc: function decodeMetaFunc() {
-            console.log('>>DMF');
             return JSON.parse(this.meta);
         },
         buildSortOnArray: function buildSortOnArray() {
