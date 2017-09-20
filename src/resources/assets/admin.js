@@ -32627,7 +32627,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else if (__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.includes(this.decodeMetaFunc(), 'published_at')) {
                     // Theres a 'date' field
                     console.log('>>WE CAUGHT IT');
-                    column = 'type_id';
+                    column = 'published_at';
                 } else {
                     // Use id
                     column = 'id';
@@ -32637,8 +32637,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.sortBy(a, function (el) {
-                console.log(el[column]);
-                return el[column];
+                //                    console.log(el[column]);
+                return new Date(el[column].date);
             });
         },
         decodeMetaFunc: function decodeMetaFunc() {
