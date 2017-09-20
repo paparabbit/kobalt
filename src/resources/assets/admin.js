@@ -32627,7 +32627,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else if (__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.includes(this.decodeMetaFunc(), 'published_at')) {
                     // Theres a 'date' field
                     console.log('>>WE CAUGHT IT');
-                    column = 'published_at';
+                    column = 'date';
                 } else {
                     // Use id
                     column = 'id';
