@@ -381,8 +381,15 @@ class ImageHelper
 
         $file_name = $data->$field_name;
 
-        // If theres no image included use the one on the resource
+        // If there's no image included try and find one on the resource
+
         if($file_name == ''){
+            // This happens when a resource is created with no image, then an image is added, it will try and find
+            // the name of the original to delete, which of course it cant
+            if(!isset($this->resource)){
+                return null;
+            }
+
             return $this->resource->$field_name;
         }
 
