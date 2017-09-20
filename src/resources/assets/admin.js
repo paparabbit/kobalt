@@ -32602,7 +32602,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         // This will disable dragging if theres no sort on
         getStatus: function getStatus() {
-            if (!_.includes(this.decodedMeta, 'sort_on')) {
+            if (!_.includes(this.decodeMetaFunc(), 'sort_on')) {
                 return true;
             }
             return false;
@@ -32621,7 +32621,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (_.includes(this.decodeMetaFunc(), 'sort_on')) {
                     // Theres a sort on field
                     column = 'sort_on';
-                } else if (_.includes(this.decodedMeta, 'published_at')) {
+                } else if (_.includes(this.decodeMetaFunc(), 'published_at')) {
                     // Theres a 'date' field
                     column = 'published_at';
                 } else {
