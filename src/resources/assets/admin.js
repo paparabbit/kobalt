@@ -32711,9 +32711,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['item', 'meta', 'edit_path'],
 
     methods: {
-        created: function created() {
-            console.log('>>ROLAND');
-        },
         buildUrl: function buildUrl() {
             return this.edit_path + '/' + this.item.id + '/edit';
         },
@@ -56395,7 +56392,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('table', {
-    staticClass: "table table-bordered table-striped list-page rabbit"
+    staticClass: "table table-bordered table-striped list-page"
   }, [_c('thead', [_c('tr', [_vm._l((_vm.decodedMeta), function(meta, key) {
     return _c('th', [_vm._v(_vm._s(key))])
   }), _vm._v(" "), _c('th')], 2)]), _vm._v(" "), _c('draggable', {
@@ -56436,7 +56433,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('tr', [_vm._l((_vm.meta), function(meta_name, key) {
     return _c('td', [(meta_name == 'sort_on') ? [_c('span', {
       staticClass: "sort-on"
-    }, [_vm._v(_vm._s(_vm.item['sort_on']))])] : (meta_name == 'is_active' || meta_name == 'is_published') ? [_vm._v("\n            " + _vm._s(_vm.convertStatus(_vm.item[meta_name])) + "\n        ")] : (meta_name.toLowerCase().includes('date')) ? [_vm._v("\n            " + _vm._s(_vm.convertDate(_vm.item[meta_name].date)) + "\n        ")] : (key.toLowerCase().includes('date')) ? [_vm._v("\n            " + _vm._s(_vm.convertDate(_vm.item[meta_name].date)) + "\n        ")] : [_vm._v("\n            " + _vm._s(_vm.item[meta_name]) + "\n        ")]], 2)
+    }, [_vm._v(_vm._s(_vm.item['sort_on']))])] : (meta_name == 'is_active' || meta_name == 'is_published') ? [_vm._v("\n            " + _vm._s(_vm.convertStatus(_vm.item[meta_name])) + "\n        ")] : (meta_name.toLowerCase().includes('date')) ? [_vm._v("\n            Boris\n        ")] : (key.toLowerCase().includes('date')) ? [_vm._v("\n            " + _vm._s(_vm.convertDate(_vm.item[meta_name].date)) + "\n        ")] : [_vm._v("\n            " + _vm._s(_vm.item[meta_name]) + "\n        ")]], 2)
   }), _vm._v(" "), _c('td', [_c('a', {
     staticClass: "btn btn-primary",
     attrs: {
