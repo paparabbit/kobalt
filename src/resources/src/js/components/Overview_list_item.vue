@@ -7,6 +7,9 @@
             <template v-else-if="meta_name == 'is_active' || meta_name == 'is_published'">
                 {{ convertStatus(item[meta_name]) }}
             </template>
+            <template v-else-if="meta_name.toLowerCase().includes('date')">
+                {{ convertDate(item[meta_name].date) }}
+            </template>
             <template v-else-if="key.toLowerCase().includes('date')">
                 {{ convertDate(item[meta_name].date) }}
             </template>
@@ -26,6 +29,9 @@
         props: ['item', 'meta', 'edit_path'],
 
         methods: {
+            created(){
+                console.log('>>ROLAND');
+            },
             buildUrl(){
                 return this.edit_path + '/' + this.item.id + '/edit';
             },
