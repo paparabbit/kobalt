@@ -32626,7 +32626,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     column = 'sort_on';
                 } else if (__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.includes(this.decodeMetaFunc(), 'published_at')) {
                     // Theres a 'date' field
-                    console.log('>>WE CAUGHT IT');
                     column = 'published_at';
                 } else {
                     // Use id
@@ -32636,10 +32635,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 column = this.sort_column;
             }
 
-            return __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.sortBy(a, function (el) {
-                //                    console.log(el[column]);
-                return new Date(el[column].date);
+            var sorted = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.sortBy(a, function (el) {
+                console.log(el[column]);
+                return el[column];
             });
+
+            // !TODO Dates go the other way to laravel-magic-two???
+            if (column == 'published_at') {
+                return __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.reverse(sorted);
+            }
+
+            return sorted;
         },
         decodeMetaFunc: function decodeMetaFunc() {
             console.log('>>DMF');
