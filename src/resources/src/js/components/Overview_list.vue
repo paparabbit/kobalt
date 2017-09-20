@@ -60,6 +60,7 @@
 
                     }else if(_.includes(this.decodeMetaFunc(), 'published_at')){
                         // Theres a 'date' field
+                        console.log('>>WE CAUGHT IT');
                         column = 'published_at';
 
                     }else{
@@ -77,6 +78,7 @@
             },
 
             decodeMetaFunc(){
+                console.log('>>DMF');
                 return JSON.parse(this.meta);
             },
 

@@ -32623,6 +32623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     column = 'sort_on';
                 } else if (_.includes(this.decodeMetaFunc(), 'published_at')) {
                     // Theres a 'date' field
+                    console.log('>>WE CAUGHT IT');
                     column = 'published_at';
                 } else {
                     // Use id
@@ -32637,6 +32638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         decodeMetaFunc: function decodeMetaFunc() {
+            console.log('>>DMF');
             return JSON.parse(this.meta);
         },
         buildSortOnArray: function buildSortOnArray() {
