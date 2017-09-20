@@ -29,14 +29,11 @@
         props: ['item', 'meta', 'edit_path'],
 
         methods: {
-            created(){
-                console.log('>>ROLAND');
-            },
             buildUrl(){
                 return this.edit_path + '/' + this.item.id + '/edit';
             },
             convertDate(date){
-                return moment(date).format("Y-MM-DD");
+                return moment(date).format("Do MMM YYYY");
             },
             convertStatus(status){
                 return status == 1 ? 'Yes' : 'No';
