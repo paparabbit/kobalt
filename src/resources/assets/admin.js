@@ -32564,6 +32564,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 //
 //
 //
@@ -32578,6 +32580,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -32589,7 +32592,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             // Convert the json back into an array
             // You cannot use a computed prop on this as it wont stay interactive
-            passedList: this.sortedList(_.values(JSON.parse(this.list)))
+            passedList: this.sortedList(__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.values(JSON.parse(this.list)))
         };
     },
 
@@ -32602,7 +32605,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         // This will disable dragging if theres no sort on
         getStatus: function getStatus() {
-            if (!_.includes(this.decodeMetaFunc(), 'sort_on')) {
+            if (!__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.includes(this.decodeMetaFunc(), 'sort_on')) {
                 return true;
             }
             return false;
@@ -32618,10 +32621,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 // Nothing supplied to sort on so guess
 
-                if (_.includes(this.decodeMetaFunc(), 'sort_on')) {
+                if (__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.includes(this.decodeMetaFunc(), 'sort_on')) {
                     // Theres a sort on field
                     column = 'sort_on';
-                } else if (_.includes(this.decodeMetaFunc(), 'published_at')) {
+                } else if (__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.includes(this.decodeMetaFunc(), 'published_at')) {
                     // Theres a 'date' field
                     console.log('>>WE CAUGHT IT');
                     column = 'published_at';
@@ -32633,7 +32636,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 column = this.sort_column;
             }
 
-            return _.sortBy(a, function (el) {
+            return __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.sortBy(a, function (el) {
                 return el[column];
             });
         },

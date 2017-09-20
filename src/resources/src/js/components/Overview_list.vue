@@ -14,7 +14,8 @@
 
 <script>
     import draggable from 'vuedraggable';
-
+    import _ from 'lodash';
+    
     export default{
 
          props: ['list', 'meta', 'edit_path', 'sort_column'],
