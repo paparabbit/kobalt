@@ -25,9 +25,10 @@ abstract class AdminController extends Controller
      * Generates the overview view
      *
      * @param Collection $collection
+     * @param array $settings
      * @return $this
      */
-    protected function getOverviewView(Collection $collection)
+    protected function getOverviewView(Collection $collection, $settings = [])
     {
         $route_helper = new RouteHelper();
 
@@ -37,7 +38,7 @@ abstract class AdminController extends Controller
             'edit_path' => "/" . app('router')->getCurrentRoute()->uri,
             'title' => $this->title,
             'meta' => $this->model->getOverviewMeta()
-        ]);
+        ] + $settings);
     }
 
 

@@ -3,11 +3,11 @@
             <thead>
                 <tr>
                     <th v-for="(meta, key) in decodedMeta">{{ key }}</th>
-                    <th></th>
+                    <th v-if="is_editable"></th>
                 </tr>
             </thead>
             <draggable :list="passedList" :options="{disabled:getStatus()}" element="tbody" @end="endDrag" class="">
-                <overview-list-item v-for="item in passedList" key="item.id" :item="item" :meta="decodedMeta" :edit_path="edit_path"></overview-list-item>
+                <overview-list-item v-for="item in passedList" key="item.id" :item="item" :meta="decodedMeta" :edit_path="edit_path" :is_editable="is_editable"></overview-list-item>
             </draggable>
         </table>
 </template>
@@ -18,7 +18,7 @@
 
     export default{
 
-         props: ['list', 'meta', 'edit_path', 'sort_column'],
+         props: ['list', 'meta', 'edit_path', 'is_editable', 'sort_column'],
 
         data(){
             return{

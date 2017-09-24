@@ -32586,7 +32586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['list', 'meta', 'edit_path', 'sort_column'],
+    props: ['list', 'meta', 'edit_path', 'is_editable', 'sort_column'],
 
     data: function data() {
         return {
@@ -32713,12 +32713,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['item', 'meta', 'edit_path'],
+    props: ['item', 'meta', 'edit_path', 'is_editable'],
 
     methods: {
         buildUrl: function buildUrl() {
@@ -56405,7 +56407,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "table table-bordered table-striped list-page"
   }, [_c('thead', [_c('tr', [_vm._l((_vm.decodedMeta), function(meta, key) {
     return _c('th', [_vm._v(_vm._s(key))])
-  }), _vm._v(" "), _c('th')], 2)]), _vm._v(" "), _c('draggable', {
+  }), _vm._v(" "), (_vm.is_editable) ? _c('th') : _vm._e()], 2)]), _vm._v(" "), _c('draggable', {
     attrs: {
       "list": _vm.passedList,
       "options": {
@@ -56422,7 +56424,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "item": item,
         "meta": _vm.decodedMeta,
-        "edit_path": _vm.edit_path
+        "edit_path": _vm.edit_path,
+        "is_editable": _vm.is_editable
       }
     })
   }))], 1)
@@ -56444,12 +56447,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('td', [(meta_name == 'sort_on') ? [_c('span', {
       staticClass: "sort-on"
     }, [_vm._v(_vm._s(_vm.item['sort_on']))])] : (meta_name == 'is_active' || meta_name == 'is_published') ? [_vm._v("\n            " + _vm._s(_vm.convertStatus(_vm.item[meta_name])) + "\n        ")] : (meta_name.toLowerCase().includes('date')) ? [_vm._v("\n            " + _vm._s(_vm.convertDate(_vm.item[meta_name].date)) + "\n        ")] : (key.toLowerCase().includes('date')) ? [_vm._v("\n            " + _vm._s(_vm.convertDate(_vm.item[meta_name].date)) + "\n        ")] : [_vm._v("\n            " + _vm._s(_vm.item[meta_name]) + "\n        ")]], 2)
-  }), _vm._v(" "), _c('td', [_c('a', {
+  }), _vm._v(" "), (_vm.is_editable) ? _c('td', [_c('a', {
     staticClass: "btn btn-primary",
     attrs: {
       "href": _vm.buildUrl()
     }
-  }, [_vm._v("Edit")])])], 2)
+  }, [_vm._v("Edit")])]) : _vm._e()], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

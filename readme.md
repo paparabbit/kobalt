@@ -185,6 +185,8 @@ Will create RabbitController etc
 
 ````
 php artisan make:ko-resources Rabbit
+php artisan make:ko-controller Rabbit
+php artisan make:ko-form Rabbit
 ````
 
 //!TODO config/app.php
