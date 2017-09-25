@@ -10,6 +10,11 @@
         ])
 
         <div class="page-header">
+            @php
+                echo 'hello';
+                dd($addable);
+            @endphp
+
             @empty($addable)
                 <a href="{{ $create_path }}" class="btn btn-primary pull-right">Add a new {{ $title }}</a>
             @endempty
