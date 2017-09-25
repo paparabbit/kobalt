@@ -10,7 +10,7 @@
         ])
 
         <div class="page-header">
-            @if (isset($addable) && $addable !== false)
+            @if (!isset($addable) && $addable !== false)
                 <a href="{{ $create_path }}" class="btn btn-primary pull-right">Add a new {{ $title }}</a>
             @endif
             <h1>List {{ str_plural( $title) }}</h1>
