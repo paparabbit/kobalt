@@ -35,7 +35,7 @@ abstract class AdminController extends Controller
         // Disable the add button
         // This will work based on the global so long as its not set on the overview method
 
-        if($this->addable === false) {
+        if(isset($this->addable)) {
             if(!array_has($settings, 'addable')){
 
                 $arr = ['addable' => false];
@@ -46,7 +46,7 @@ abstract class AdminController extends Controller
         // Disable the edit button
         // This will work based on the global so long as its not set on the overview method
 
-        if($this->editable === false) {
+        if(isset($this->editable)) {
             if(!array_has($settings, 'editable')){
 
                 $arr = ['editable' => false];
