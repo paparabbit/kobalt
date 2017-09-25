@@ -17,7 +17,7 @@
                 {{ item[meta_name] }}
             </template>
         </td>
-        <td v-if="is_editable">
+        <td v-if="editable">
             <a :href="buildUrl()" class="btn btn-primary">Edit</a>
         </td>
     </tr>
@@ -28,7 +28,7 @@
 
     export default{
 
-        props: ['item', 'meta', 'edit_path', 'is_editable'],
+        props: ['item', 'meta', 'edit_path', 'editable'],
 
         methods: {
             buildUrl(){
