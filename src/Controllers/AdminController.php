@@ -28,9 +28,32 @@ abstract class AdminController extends Controller
      * @param array $settings
      * @return $this
      */
-    protected function getOverviewView(Collection $collection, $settings = [])
+    protected function getOverviewView(Collection $collection, Array $settings = [])
     {
         $route_helper = new RouteHelper();
+
+        // Disable the add button
+        // This will work based on the global so long as its not set on the overview method
+
+        if($this->addable === false) {
+            if(!array_has($settings, 'addable')){
+
+                $arr = ['addable' => false];
+                $settings = array_merge($settings + $arr);
+            }
+        }
+
+        // Disable the edit button
+        // This will work based on the global so long as its not set on the overview method
+
+        if($this->editable === false) {
+            if(!array_has($settings, 'editable')){
+
+                $arr = ['editable' => false];
+                $settings = array_merge($settings + $arr);
+            }
+        }
+
 
         return view('kobalt::overview')->with([
             'data' => $collection,

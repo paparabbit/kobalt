@@ -190,3 +190,5 @@ php artisan make:ko-form Rabbit
 ````
 
 //!TODO config/app.php
+
+//!TODO Notes about editable, deleteable, addable
