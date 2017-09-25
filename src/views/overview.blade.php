@@ -10,9 +10,10 @@
         ])
 
         <div class="page-header">
-            @if (!isset($addable) && $addable !== false)
+            @empty($addable)
                 <a href="{{ $create_path }}" class="btn btn-primary pull-right">Add a new {{ $title }}</a>
-            @endif
+            @endempty
+
             <h1>List {{ str_plural( $title) }}</h1>
         </div>
 
