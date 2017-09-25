@@ -56425,7 +56425,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "item": item,
         "meta": _vm.decodedMeta,
         "edit_path": _vm.edit_path,
-        "editable": _vm.is_editable
+        "editable": _vm.editable
       }
     })
   }))], 1)

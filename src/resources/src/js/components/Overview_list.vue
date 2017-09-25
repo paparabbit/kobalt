@@ -7,7 +7,7 @@
                 </tr>
             </thead>
             <draggable :list="passedList" :options="{disabled:getStatus()}" element="tbody" @end="endDrag" class="">
-                <overview-list-item v-for="item in passedList" key="item.id" :item="item" :meta="decodedMeta" :edit_path="edit_path" :editable="is_editable"></overview-list-item>
+                <overview-list-item v-for="item in passedList" key="item.id" :item="item" :meta="decodedMeta" :edit_path="edit_path" :editable="editable"></overview-list-item>
             </draggable>
         </table>
 </template>
