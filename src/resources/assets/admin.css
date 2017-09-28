@@ -66,10 +66,12 @@
 }
 .mfp-zoom-out-cur,
 .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
+  cursor: -webkit-zoom-out;
   cursor: zoom-out;
 }
 .mfp-zoom {
   cursor: pointer;
+  cursor: -webkit-zoom-in;
   cursor: zoom-in;
 }
 .mfp-auto-cursor .mfp-content {
@@ -1074,4 +1076,10 @@ ul.has-many-uniquely li a.edit {
 }
 p.help-block {
   color: #aaa;
+}
+/* DESKTOP - Stop the forms going too long */
+@media screen and (min-width: 993px) {
+  .form-control {
+    width: 60%;
+  }
 }
