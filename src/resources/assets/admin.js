@@ -49390,7 +49390,6 @@ Vue.component('overview-list-item', __webpack_require__(145));
 Vue.component('image-gallery', __webpack_require__(142));
 Vue.component('image-gallery-item', __webpack_require__(143));
 
-console.log('>>>> Testing');
 // ES6 js
 
 
