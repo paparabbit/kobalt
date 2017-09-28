@@ -1082,4 +1082,7 @@ p.help-block {
   .form-control {
     width: 60%;
   }
+  .form-control-full {
+    width: 100%;
+  }
 }

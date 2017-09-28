@@ -192,3 +192,20 @@ php artisan make:ko-form Rabbit
 //!TODO config/app.php
 
 //!TODO Notes about editable, deleteable, addable
+
+Form fields on desktop will be 60% width unless
+
+````
+'attr' => [
+    'class' => 'form-control-full'
+],
+````
+Rich text fields
+
+````
+'attr' => [
+    'class' => 'rich-text'
+],
+````
+
+
