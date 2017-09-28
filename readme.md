@@ -197,7 +197,7 @@ Form fields on desktop will be 60% width unless
 
 ````
 'attr' => [
-    'class' => 'form-control-full'
+    'class' => 'form-control full-width'
 ],
 ````
 Rich text fields
