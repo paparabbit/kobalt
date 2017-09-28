@@ -14,7 +14,7 @@ Vue.component('overview-list-item', require('./components/Overview_list_item.vue
 Vue.component('image-gallery', require('./components/Image_gallery.vue'));
 Vue.component('image-gallery-item', require('./components/Image_gallery_item.vue'));
 
-
+console.log('>>>> Testing');
 // ES6 js
 
 import TinyMce from './es6/tinymcesetup';
