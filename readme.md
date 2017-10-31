@@ -179,6 +179,12 @@ Publish all admin views
 php artisan vendor:publish --provider="Hoppermagic\Kobalt\KobaltServiceProvider" --tag=admin-views --force
 ````
 
+If you need to recompile the js/css
+
+````
+npm run production
+````
+
 Create model, admin controller, form and request
 
 Will create RabbitController etc

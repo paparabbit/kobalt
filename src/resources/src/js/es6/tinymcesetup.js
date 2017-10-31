@@ -6,7 +6,7 @@ export default class TinyMce {
         tinymce.init({
                  selector: '.rich-text',
                  plugins: [
-                     'paste code'
+                     'paste code, link'
                  ],
                  toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
                  content_css: [
