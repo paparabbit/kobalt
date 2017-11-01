@@ -296,7 +296,8 @@ class ImageHelper
 
             }else{
 
-                Storage::put($thumb->get('path') .'/'. $name . $thumb->get('suffix') . '.'. $extension, (string) $image->encode($extension, 96));
+                $quality = $thumb->get('quality') ?: 96;
+                Storage::put($thumb->get('path') .'/'. $name . $thumb->get('suffix') . '.'. $extension, (string) $image->encode($extension, $quality));
             }
         }
 
