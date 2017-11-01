@@ -17,10 +17,10 @@
             <h1>List {{ str_plural( $title) }}</h1>
         </div>
 
-        {{-- Allow a message to be passed to the page --}}
+        {{-- Allow a message block of html to be passed to the page --}}
 
         @if(isset($message))
-            <div class="alert alert-warning alert-important" role="warning">{{ $message }}</div>
+            {!! $message !!}
         @endif
 
         {{-- Build up the table --}}
