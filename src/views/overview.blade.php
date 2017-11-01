@@ -17,6 +17,13 @@
             <h1>List {{ str_plural( $title) }}</h1>
         </div>
 
+        {{-- Allow a message to be passed to the page --}}
+
+        @if(isset($message))
+            <div class="alert alert-warning alert-important" role="warning">{{ $message }}</div>
+        @endif
+
+        {{-- Build up the table --}}
 
         @if ($data->count())
 
