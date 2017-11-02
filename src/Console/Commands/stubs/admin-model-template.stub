@@ -59,13 +59,15 @@ class {{name}} extends Model
 //                ),
 //                'scaled-retina' => array(
 //                    'path' => 'upload/projectfirst/scaled',
-//                    'suffix' => '@2x'
+//                    'suffix' => '@2x',
+//                    'quality' => 97,
 //                ),
 //                'scaled' => array(
 //                    'path' => 'upload/projectfirst/scaled',
 //                    'transformations' => array(
 //                        Transforms::RESIZE => array(775, NULL),
 //                    ),
+//                    'quality' => 97,
 //                ),
 //                'thumbnail' => array(
 //                    'path' => 'upload/projectfirst/thumbs',
