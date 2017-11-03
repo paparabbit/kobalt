@@ -24,7 +24,7 @@ class KobaltServiceProvider extends ServiceProvider
 
         // Publish all admin views
         $this->publishes([
-            __DIR__.'/views' => resource_path('views/hoppermagic/kobalt'),
+            __DIR__.'/views' => resource_path('views/vendor/kobalt'),
         ], 'admin-views');
 
 
