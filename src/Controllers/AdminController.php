@@ -172,9 +172,20 @@ abstract class AdminController extends Controller
     {
         $resource->update(array_merge($request->all(), $additional_values));
 
-        flash('Your ' . $this->title . ' was successfully updated', 'success');
+        $this->showUpdatedMessage();
 
         return $resource;
+    }
+
+
+
+    /**
+     * Flashes the updated message on screen
+     *
+     */
+    protected function showUpdatedMessage()
+    {
+        flash('Your ' . $this->title . ' was successfully updated', 'success');
     }
 
 
