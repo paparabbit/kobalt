@@ -128,6 +128,140 @@ class ImageHelper
 
 
     /**
+     * Creates an image from blob data using Intervention Image
+     *
+     * @param $blob
+     * @return mixed
+     * @throws Exception
+     */
+    public function createImageFromBlob($blob)
+    {
+        try {
+            $image = Image::make($blob);
+
+        } catch (Exception $e) {
+
+            throw new Exception("Blob data didn't make an image");
+        }
+
+        return $image;
+    }
+
+
+
+    /**
+     * Pass in an image created from a blob, find the extension
+     *
+     * @param $mime
+     * @return string
+     * @throws Exception
+     */
+    public function getExtensionFromBlobImage($mime)
+    {
+        switch($mime){
+            case 'image/jpeg':
+                return 'jpg';
+                break;
+            case 'image/gif':
+                return 'gif';
+                break;
+            case 'image/png':
+                return 'png';
+                break;
+            default:
+                break;
+        }
+
+        throw new Exception("Can't handle files of this type");
+    }
+
+
+
+    /**
+     * Very messy, but we supply an image that has been made up by intervention
+     * and use that as the base for the thumbs
+     *
+     * @param $image
+     * @param $meta_name
+     * @param $file_name
+     * @param $resource
+     * @param null $ignore_thumbs
+     */
+    public function generateThumbFromImage($image, $meta_name, $file_name, $resource, $ignore_thumbs = null)
+    {
+//        $files = $request->allFiles();
+        $image_meta = $resource->getImageMeta();
+//        $this->resource = $resource;
+
+//
+        foreach($image_meta as $image_name => $thumb_data) {
+            if($meta_name == $image_name){
+
+                // If a thumb is to be ignored, remove it from the $thumb_data
+
+                if ($ignore_thumbs != null) {
+                    if ($image_name == $ignore_thumbs['imageref']) {
+
+                        foreach ($thumb_data as $thumb_name => $thumb) {
+                            if (in_array($thumb_name, $ignore_thumbs['thumbs'])) {
+                                unset($thumb_data[$thumb_name]);
+                            }
+                        }
+                    }
+                }
+
+//                $name = $this->findImageName($request, $image_name);
+                $this->processThumbFromImage($image, $file_name, $thumb_data);
+            }
+        }
+    }
+
+
+
+    /**
+     * Slightly different to the original method, creates Thumbs from a supplied image
+     *
+     * @param $image
+     * @param $file_name
+     * @param Collection $thumb_data
+     */
+    private function processThumbFromImage($image, $file_name, Collection $thumb_data)
+    {
+        $extension = $this->getExtensionFromBlobImage($image->mime);
+        $image->backup();
+
+        foreach ($thumb_data as $thumb_name => $thumb) {
+
+            $image->reset();
+
+            // Are there transforms....
+
+            if($thumb->has('transformations')){
+
+                // Loop through and add each transform
+
+                foreach ($thumb->get('transformations') as $trans_name => $trans_data) {
+
+                    $image = $this->addTransformation($image, $trans_name, $trans_data);
+
+                    // Sharpen a touch??
+                    $image->sharpen(5);
+                }
+            }
+
+            $quality = $thumb->get('quality') ?: 96;
+            Storage::put($thumb->get('path') .'/'. $file_name . $thumb->get('suffix') . '.'. $extension, (string) $image->encode($extension, $quality));
+        }
+
+        // All saved free up memory
+
+        $image->destroy();
+        gc_collect_cycles();
+    }
+
+
+
+    /**
      * Provides an array in the format of
      * field_name => extension
      *
