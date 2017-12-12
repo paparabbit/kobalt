@@ -93,25 +93,6 @@ abstract class AdminController extends Controller
 
 
     /**
-     * Persists the resource
-     * adds on any additional data not present in the request, like file name extensions
-     *
-     * @param $request
-     * @param array $additional_data
-     * @return mixed
-     */
-    protected function storeResource($request, Array $additional_data = [])
-    {
-        $resource = $this->model->create(array_merge($request->all(), $additional_data));
-
-        $this->showCreatedMessage();
-
-        return $resource;
-    }
-
-
-
-    /**
      * Flashes the created message on screen
      *
      */
@@ -158,26 +139,6 @@ abstract class AdminController extends Controller
                 'edit_form' => $edit_form,
             )
         );
-    }
-
-
-
-    /**
-     * Updates the resource in storage
-     * adds on any additional data not present in the request, like the full file name rabbit.jpg
-     *
-     * @param $resource
-     * @param $request
-     * @param array $additional_values
-     * @return mixed
-     */
-    protected function updateResource($resource, $request, Array $additional_values = [])
-    {
-        $resource->update(array_merge($request->all(), $additional_values));
-
-        $this->showUpdatedMessage();
-
-        return $resource;
     }
 
 
