@@ -6,12 +6,12 @@
 
         @include('kobalt::partials.breadcrumb', [
             'depth' => 2,
-            'button_text' => 'Show'
+            'button_text' => 'View'
         ])
 
         <div id="lb_content">
 
-            @include('kobalt::partials.page_header', ['title_text' => 'Show'])
+            @include('kobalt::partials.page_header', ['title_text' => 'View'])
 
             {!! form($show_form) !!}
 

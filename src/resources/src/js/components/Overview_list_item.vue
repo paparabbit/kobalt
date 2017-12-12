@@ -21,7 +21,7 @@
             <a :href="buildEditUrl()" class="btn btn-primary">Edit</a>
         </td>
         <td v-if="showable">
-            <a :href="buildShowUrl()" class="btn btn-primary">Show</a>
+            <a :href="buildShowUrl()" class="btn btn-primary">View</a>
         </td>
     </tr>
 </template>
