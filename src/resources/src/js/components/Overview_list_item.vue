@@ -31,7 +31,7 @@
 
     export default{
 
-        props: ['item', 'meta', 'edit_path', 'editable'],
+        props: ['item', 'meta', 'edit_path', 'editable', 'showable'],
 
         methods: {
             buildUrl(){
