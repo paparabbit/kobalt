@@ -62,6 +62,17 @@ abstract class AdminController extends Controller
         }
 
 
+        // Add a View button that shows an uneditable form
+
+        if(isset($this->showable)) {
+            if(!array_has($settings, 'showable')){
+
+                $arr = ['showable' => true];
+                $settings = array_merge($settings + $arr);
+            }
+        }
+
+
         return view('kobalt::overview')->with([
             'data' => $collection,
             'create_path' => $create_path ?? '',

@@ -20,6 +20,9 @@
         <td v-if="editable">
             <a :href="buildUrl()" class="btn btn-primary">Edit</a>
         </td>
+        <td v-if="showable">
+            <a class="btn btn-primary">Show</a>
+        </td>
     </tr>
 </template>
 
