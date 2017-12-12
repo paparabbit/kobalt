@@ -44,6 +44,10 @@ abstract class AdminController extends Controller
             }else{
                 $create_path = $route_helper->getNamedRoute('create');
             }
+
+        }else{
+            //!TODO this is ugly must tidy this up
+            $create_path = $route_helper->getNamedRoute('create');
         }
 
         // Disable the edit button
