@@ -18,10 +18,10 @@
             </template>
         </td>
         <td v-if="editable">
-            <a :href="buildUrl()" class="btn btn-primary">Edit</a>
+            <a :href="buildEditUrl()" class="btn btn-primary">Edit</a>
         </td>
         <td v-if="showable">
-            <a class="btn btn-primary">Show</a>
+            <a :href="buildShowUrl()" class="btn btn-primary">Show</a>
         </td>
     </tr>
 </template>
@@ -34,8 +34,11 @@
         props: ['item', 'meta', 'edit_path', 'editable', 'showable'],
 
         methods: {
-            buildUrl(){
+            buildEditUrl(){
                 return this.edit_path + '/' + this.item.id + '/edit';
+            },
+            buildShowUrl(){
+                return this.edit_path + '/' + this.item.id;
             },
             convertDate(date){
                 return moment(date).format("Do MMM YYYY");

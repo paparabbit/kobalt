@@ -4,6 +4,7 @@
                 <tr>
                     <th v-for="(meta, key) in decodedMeta">{{ key }}</th>
                     <th v-if="editable"></th>
+                    <th v-if="showable"></th>
                 </tr>
             </thead>
             <draggable :list="passedList" :options="{disabled:getStatus()}" element="tbody" @end="endDrag" class="">
