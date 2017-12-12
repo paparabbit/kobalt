@@ -40,6 +40,9 @@ abstract class AdminController extends Controller
 
                 $arr = ['addable' => false];
                 $settings = array_merge($settings + $arr);
+
+            }else{
+                $create_path = $route_helper->getNamedRoute('create');
             }
         }
 
@@ -57,7 +60,7 @@ abstract class AdminController extends Controller
 
         return view('kobalt::overview')->with([
             'data' => $collection,
-            'create_path' => $route_helper->getNamedRoute('create'),
+            'create_path' => $create_path ?? '',
             'edit_path' => "/" . app('router')->getCurrentRoute()->uri,
             'title' => $this->title,
             'meta' => $this->model->getOverviewMeta()
