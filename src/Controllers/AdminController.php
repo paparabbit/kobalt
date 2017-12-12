@@ -159,6 +159,38 @@ abstract class AdminController extends Controller
 
 
     /**
+     * Shows the show view
+     *
+     * @param $show_form
+     * @return $this
+     */
+    protected function getShowView($show_form)
+    {
+        $route_params = app('router')->getCurrentRoute()->parameters;
+        $route_helper = new RouteHelper();
+
+        // If we cant delete this resource
+
+        if($this->deletable === false) {
+            $delete_link = null;
+        }else {
+            $delete_link = $route_helper->getNamedRoute('confirmdel', $route_params);
+        }
+
+        return view('kobalt::show')->with(
+            array(
+                'title' => $this->title,
+                'back_title' => $this->back_title,
+                'back_link' => $this->back_link,
+                'delete_link' => $delete_link,
+                'show_form' => $show_form,
+            )
+        );
+    }
+
+
+
+    /**
      * Flashes the updated message on screen
      *
      */
