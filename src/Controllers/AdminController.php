@@ -76,7 +76,7 @@ abstract class AdminController extends Controller
         return view('kobalt::overview')->with([
             'data' => $collection,
             'create_path' => $create_path ?? '',
-            'edit_path' => $edit_path ?? "/" . app('router')->getCurrentRoute()->uri,
+            'edit_path' => $this->edit_path ?? "/" . app('router')->getCurrentRoute()->uri,
             'title' => $this->title,
             'meta' => $this->model->getOverviewMeta()
         ] + $settings);
