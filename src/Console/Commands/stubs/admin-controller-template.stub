@@ -77,15 +77,7 @@ class {{name}}Controller extends AdminController
      */
     public function store({{name}}Request $request)
      {
-        // Add the extension
-        //$extension_array = ImageHelper::generateExtensionArray($request);
 
-        $resource = $this->storeResource($request /*,$extension_array*/ );
-
-         // Store files after the resource has been saved as we can pull the image meta from the resource
-         //KobaltStorage::storeImages($request, $resource, $this->generateThumbnailIgnoreList($request));
-
-         return redirect()->route('admin.XXXXXXXXX.edit', $resource);
     }
 
 
@@ -137,13 +129,7 @@ class {{name}}Controller extends AdminController
      */
     public function update({{name}} ${{resource}}, {{name}}Request $request)
     {
-        //KobaltStorage::updateStoredImages($request, $project, $this->generateThumbnailIgnoreList($request));
-
-        //$extension_array = ImageHelper::generateExtensionArray($request);
-
-        $resource = $this->updateResource(${{resource}}, $request /*, $extension_array*/);
-
-        return redirect()->route('admin.XXXXXXXX.edit', $resource);
+        
     }
 
 

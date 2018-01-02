@@ -2,14 +2,14 @@
 
 namespace App;
 
-use Hoppermagic\Kobalt\Classes\Transforms;
-use Hoppermagic\Kobalt\ImageMetaTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
+//use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+//use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+//use Spatie\MediaLibrary\Media;
 
-class {{name}} extends Model
+class {{name}} extends Model /*implements HasMediaConversions*/
 {
-//  use ImageMetaTrait;
+    // use HasMediaTrait;
 
     protected $fillable = [
         'title',
@@ -49,50 +49,6 @@ class {{name}} extends Model
 
 
 
-    // Image sizes we need to process
-
-    protected static $image_meta = array(
-//        'computerimage_file' => array(
-//            'thumbnails' => array(
-//                'original' => array(
-//                    'path' => 'upload/projectfirst/original',
-//                ),
-//                'scaled-retina' => array(
-//                    'path' => 'upload/projectfirst/scaled',
-//                    'suffix' => '@2x',
-//                    'quality' => 97,
-//                ),
-//                'scaled' => array(
-//                    'path' => 'upload/projectfirst/scaled',
-//                    'transformations' => array(
-//                        Transforms::RESIZE => array(775, NULL),
-//                    ),
-//                    'quality' => 97,
-//                ),
-//                'thumbnail' => array(
-//                    'path' => 'upload/projectfirst/thumbs',
-//                    'transformations' => array(
-//                        Transforms::FIT => array(125, 125),
-//                    ),
-//                )
-//            )
-//        ),
-//        'overviewimage_file' => array(
-//            'thumbnails' => array(
-//                'original' => array(
-//                    'path' => 'upload/projectnav/original',
-//                ),
-//                'thumbnail' => array(
-//                    'path' => 'upload/projectnav/thumbs',
-//                    'transformations' => array(
-//                        Transforms::FIT => array(125, 125),
-//                    ),
-//                )
-//            )
-//        )
-    );
-
-
     /*
     |--------------------------------------------------------------------------
     | Accessors
@@ -104,13 +60,6 @@ class {{name}} extends Model
 //    public static function getOverviewMeta()
 //    {
 //        return static::$overview_meta;
-//    }
-//
-//
-//
-//    public function getImageMeta()
-//    {
-//        return $this->getImageMetaAsCollection(static::$image_meta);
 //    }
 
 
@@ -139,19 +88,41 @@ class {{name}} extends Model
 
 
 
-    /**
-     * Generates the full path to the XXXXXXX thumbnail using whatever the default storage is
-     *
-     * @return mixed
-     */
-//    public function getComputerimageThumbnailPathAttribute()
-//    {
-//        if (!$this->computerimage){
-//            return null;
-//        }
-//
-//        return Storage::url($this->getImageMeta()->get('computerimage_file')->get('thumbnail')->get('path') . '/' . $this->computerimage);
-//    }
+        /**
+         * Generates the full path to the desktop image
+         *
+         * @return mixed
+         */
+    //    public function getDesktopHeaderImageAttribute()
+    //    {
+    //        if ($this->hasMedia('headers')) {
+    //            return $this->getMedia('headers')->first()->getUrl('desktop');
+    //        }
+    //        return null;
+    //    }
+
+
+
+        /**
+         * Generates the full path to the header thumbnail
+         *
+         * @return mixed
+         */
+    //    public function getHeaderThumbnailAttribute()
+    //    {
+    //        if ($this->hasMedia('headers')) {
+    //            return $this->getMedia('headers')->first()->getUrl('thumb');
+    //        }
+    //        return null;
+    //    }
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
 
 
 
@@ -190,5 +161,23 @@ class {{name}} extends Model
 //    public function getTestimonial()
 //    {
 //        return $this->testimonial;
+//    }
+
+
+
+//    public function registerMediaConversions(Media $media = null)
+//    {
+//        $this->addMediaConversion('thumb')
+//            ->fit('crop',125,125)
+//            ->nonQueued();
+//
+//        $this->addMediaConversion('desktop')
+//            ->fit('crop',1500,550)
+//            ->nonQueued();
+//
+//        $this->addMediaConversion('mobile')
+//            ->fit('crop',600,220)
+//            ->nonQueued();
+//
 //    }
 }

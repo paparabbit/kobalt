@@ -1,11 +1,6 @@
 Set of admin views and functionality to speed up development of small custom Content Management
 Systems built in Laravel.... 
 
-Though as I get more familiar with some of the packages available for Laravel (particularly relating images to records)
-I should hopefully be able to remove a lot of the code within this.
-
-Notes to self:
-
 **Steps for using**
 
 **Config/app.php**

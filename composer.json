@@ -12,7 +12,6 @@
     "require": {
         "illuminate/support": "^5.2",
         "kris/laravel-form-builder": "^1.8",
-        "intervention/image": "^2.3",
         "laracasts/flash": "^3.0"
     },
     "autoload": {
