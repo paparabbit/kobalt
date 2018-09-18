@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hoppermagic\\Kobalt\\KobaltServiceProvider"
+                "Kobalt\\KobaltServiceProvider"
             ]
         }
     }
