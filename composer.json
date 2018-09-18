@@ -10,8 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "illuminate/support": "^5.2",
-        "kris/laravel-form-builder": "^1.8",
+        "illuminate/support": "^5.7",
+        "kris/laravel-form-builder": "^1.15",
         "laracasts/flash": "^3.0"
     },
     "autoload": {

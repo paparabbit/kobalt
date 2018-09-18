@@ -129,7 +129,7 @@ class {{name}}Controller extends AdminController
      */
     public function update({{name}} ${{resource}}, {{name}}Request $request)
     {
-        
+
     }
 
 
