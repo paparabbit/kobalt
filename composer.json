@@ -18,5 +18,12 @@
     	"psr-4": {
             "Hoppermagic\\Kobalt\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hoppermagic\\Kobalt\\KobaltServiceProvider"
+            ]
+        }
     }
 }
