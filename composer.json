@@ -11,7 +11,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "illuminate/support": "5.6.38",
+        "illuminate/support": "5.6",
         "kris/laravel-form-builder": "^1.15",
         "laracasts/flash": "^3.0"
     },
