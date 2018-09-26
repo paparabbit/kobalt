@@ -3,6 +3,8 @@ Systems built in Laravel....
 
 **Steps for using**
 
+If it doesn't auto discover
+
 **Config/app.php**
 
 ````
@@ -10,16 +12,17 @@ Hoppermagic\Kobalt\KobaltServiceProvider::class
 
 ````
 Package will automatically add the following but you might want to add these in config.app
+
+!TODO DO We need laravel collective?????
+
 ````
 // Might need to add tinker too
 Laravel\Tinker\TinkerServiceProvider::class,
 
 Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
 Laracasts\Flash\FlashServiceProvider::class,
-Intervention\Image\ImageServiceProvider::class,
 
 'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
-'Image' => Intervention\Image\Facades\Image::class,
 'Flash'	=> Laracasts\Flash\Flash::class,
 ````
 
