@@ -53,7 +53,6 @@ class KobaltServiceProvider extends ServiceProvider
         $this->commands('Hoppermagic\Kobalt\Console\Commands\MakeKobaltRequest');
 
         $this->registerFlashIfNeeded();
-        $this->registerInterventionIfNeeded();
         $this->registerFormBuilderIfNeeded();
 
         $this->loadViewsFrom(__DIR__.'/views', 'kobalt');
@@ -76,27 +75,6 @@ class KobaltServiceProvider extends ServiceProvider
             AliasLoader::getInstance()->alias(
                 'Flash',
                 'Laracasts\Flash\Flash'
-            );
-        }
-    }
-
-
-
-    /**
-     * Add intervention image to the container if its not there
-     */
-    private function registerInterventionIfNeeded()
-    {
-        if(!$this->app->offsetExists('Image')) {
-
-            $this->app->register('Intervention\Image\ImageServiceProvider');
-        }
-
-        if (!$this->aliasExists('Image')) {
-
-            AliasLoader::getInstance()->alias(
-                'Image',
-                'Intervention\Image\Facades\Image'
             );
         }
     }

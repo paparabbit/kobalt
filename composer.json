@@ -9,6 +9,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "illuminate/support": "^5.2",
         "kris/laravel-form-builder": "^1.8",
@@ -17,6 +18,13 @@
     "autoload": {
     	"psr-4": {
             "Hoppermagic\\Kobalt\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hoppermagic\\Kobalt\\KobaltServiceProvider"
+            ]
         }
     }
 }
