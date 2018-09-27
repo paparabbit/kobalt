@@ -35,7 +35,7 @@ require('magnific-popup');
 // Tiny emitter for events
 require('event-emitter-es6');
 
-import 'bootstrap';
+require('bootstrap/dist/css/bootstrap.min.css');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
