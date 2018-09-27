@@ -20,6 +20,9 @@ window.Vue = require('vue');
 //For Vue draggable component
 require('vuedraggable');
 
+// Bootstrap
+require('bootstrap');
+
 // Moment
 require('moment');
 
