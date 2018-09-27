@@ -9,7 +9,7 @@
             'title' => $title
         ])
 
-        <div class="pb-2 mt-4 mb-2 border-bottom">
+        <div class="pb-2 mt-4 mb-4 border-bottom">
             @if (!isset($addable))
                 <a href="{{ $create_path }}" class="btn btn-primary float-right">Add a new {{ $title }}</a>
             @endif

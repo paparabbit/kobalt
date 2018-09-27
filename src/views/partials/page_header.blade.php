@@ -1,4 +1,4 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
+<div class="pb-2 mt-4 mb-4 border-bottom">
     <h1> {{ $title_text. ' ' .$title  }}</h1>
 </div>
 
