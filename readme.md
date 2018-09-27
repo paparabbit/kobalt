@@ -175,6 +175,8 @@ admin images
 
 admin nav partial
 
+admin template - need to update this file with the latest structure from app.blade.php
+
 use force to overwrite
 
 after publishing amend the nav partial

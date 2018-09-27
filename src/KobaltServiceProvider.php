@@ -21,6 +21,7 @@ class KobaltServiceProvider extends ServiceProvider
             __DIR__.'/resources/assets/admin.js' => public_path('js/admin.js'),
             __DIR__.'/resources/assets/admin_extras.js' => public_path('js/admin_extras.js'),
             __DIR__.'/views/partials/nav.blade.php' => resource_path('views/vendor/kobalt/partials/nav.blade.php'),
+            __DIR__.'/views/admin_template.blade.php' => resource_path('views/vendor/kobalt/admin_template.blade.php'),
         ], 'default');
 
         // Publish all admin views
