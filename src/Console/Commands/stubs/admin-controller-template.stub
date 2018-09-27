@@ -8,7 +8,6 @@ use App\{{name}};
 use Hoppermagic\Kobalt\Controllers\AdminController;
 
 use Hoppermagic\Kobalt\Facades\ImageHelper;
-use Hoppermagic\Kobalt\Facades\KobaltStorage;
 
 use Hoppermagic\Kobalt\Helpers\FormHelper;
 //use Hoppermagic\Kobalt\ImageGalleryTrait;
