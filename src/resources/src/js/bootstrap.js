@@ -23,6 +23,9 @@ require('vuedraggable');
 // Bootstrap
 require('bootstrap');
 
+// Popper
+require('popper.js');
+
 // Moment
 require('moment');
 
