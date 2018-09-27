@@ -20,9 +20,6 @@ window.Vue = require('vue');
 //For Vue draggable component
 require('vuedraggable');
 
-// Bootstrap
-require('bootstrap');
-
 // Popper
 require('popper.js');
 
@@ -38,6 +35,8 @@ require('magnific-popup');
 // Tiny emitter for events
 require('event-emitter-es6');
 
+// Bootstrap
+require('bootstrap');
 
 
 /**
