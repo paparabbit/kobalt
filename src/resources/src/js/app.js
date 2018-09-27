@@ -53,18 +53,6 @@ class AdminSystem{
     }
 
 
-
-    setupTinyMce(){
-
-        if(document.querySelector('.rich-text') == null){
-            return false;
-        }
-
-        this.tinymce = new TinyMce();
-    }
-
-
-
     setupDeleteButton(){
 
         if(document.getElementById('delete_button') == null){
