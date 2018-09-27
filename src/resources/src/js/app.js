@@ -17,7 +17,6 @@ Vue.component('image-gallery-item', require('./components/Image_gallery_item.vue
 
 // ES6 js
 
-import TinyMce from './es6/tinymcesetup';
 import Lightbox from './es6/lightbox';
 import FlashMessages from './es6/flash_messages';
 import SelectTwo from './es6/select_two';
