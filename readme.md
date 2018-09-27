@@ -167,6 +167,8 @@ segment(2) so make sure this is what you want. Undecided if this is a good thing
 
 admin js,
 
+admin enhancements - Handy place for tiny_mce setup, select2 etc
+
 css
 
 admin images 
