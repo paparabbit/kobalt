@@ -1,5 +1,6 @@
 
 window._ = require('lodash');
+window.Popper = require('popper.js').default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -7,7 +8,11 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
+try {
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -20,9 +25,6 @@ window.Vue = require('vue');
 //For Vue draggable component
 require('vuedraggable');
 
-// Popper
-require('popper.js');
-
 // Moment
 require('moment');
 
@@ -34,9 +36,6 @@ require('magnific-popup');
 
 // Tiny emitter for events
 require('event-emitter-es6');
-
-// Bootstrap
-require('bootstrap');
 
 
 /**
