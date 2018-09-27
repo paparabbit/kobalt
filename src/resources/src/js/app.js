@@ -46,7 +46,6 @@ class AdminSystem{
         this.flash_messages = new FlashMessages();
         this.submit_button = new SubmitButton();
 
-        this.setupTinyMce();
         this.setupSelectTwo();
         this.setupDeleteButton();
         this.setupPermalinks();

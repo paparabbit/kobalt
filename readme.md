@@ -152,6 +152,8 @@ protected $redirectTo = '/admin/overviewpage'; // Admin landing page
 app.blade.php
 
 ````
+ALSO ADD LATEST VERSION OF BOOTSTRAP CSS
+
 <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 <script src="{{ asset('js/admin.js') }}"></script>
 ````
