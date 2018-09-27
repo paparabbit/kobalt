@@ -1,5 +1,5 @@
-
 window._ = require('lodash');
+window.Popper = require('popper.js').default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -9,7 +9,8 @@ window._ = require('lodash');
 
 try {
     window.$ = window.jQuery = require('jquery');
-    window.Popper = require('popper.js').default;
+
+    require('bootstrap');
 } catch (e) {}
 
 /**
@@ -34,8 +35,6 @@ require('magnific-popup');
 
 // Tiny emitter for events
 require('event-emitter-es6');
-
-require('bootstrap/dist/css/bootstrap.min.css');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
