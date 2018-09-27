@@ -19,6 +19,7 @@
     "lodash": "^4.17.4",
     "magnific-popup": "^1.1.0",
     "moment": "^2.0.0",
+    "popper.js": "^1.14.4",
     "select2": "^4.0.3",
     "vue": "^2.1.10",
     "vuedraggable": "2.8.3-rc0"
