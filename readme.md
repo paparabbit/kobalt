@@ -26,6 +26,13 @@ Laracasts\Flash\FlashServiceProvider::class,
 'Flash'	=> Laracasts\Flash\Flash::class,
 ````
 
+
+//!TODONeed to add this to all build forms
+````
+$this->addCustomField('unescaped-static', 'Hoppermagic\Kobalt\Forms\Fields\UnescapedStaticType');
+````
+
+
 **Setup db preferences**
 
 Run the standard laravel auth generator
