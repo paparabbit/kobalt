@@ -1,6 +1,6 @@
 <template>
 
-    <draggable :list="passedList" element="ul" @end="endDrag" class="has-many-uniquely">
+    <draggable :list="passedList" :options="{disabled:getStatus()}" element="ul" @end="endDrag" class="has-many-uniquely">
         <image-gallery-item v-for="item in passedList" class="has-many-uniquely" key="item.id"
             :id=item.id
             :image_data=item.thumbnail_path
@@ -32,6 +32,14 @@
         },
 
         methods: {
+            // This will disable dragging if theres no sort on
+            getStatus(){
+                if(!_.includes(this.decodeMetaFunc(), 'sort_on')){
+                    return true;
+                }
+                return false;
+            },
+
             endDrag(event){
                 this.buildSortOnArray();
             },
@@ -58,6 +66,9 @@
                 this.postToServer(ids)
             },
 
+            decodeMetaFunc(){
+                return JSON.parse(this.meta);
+            },
 
             pullFromServer(){
                 console.log('>>PULLING');
