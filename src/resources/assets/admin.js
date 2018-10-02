@@ -66531,7 +66531,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         // This will disable dragging if theres no sort on
         getStatus: function getStatus() {
-            if (!_.includes(this.decodeMetaFunc(), 'sort_on')) {
+            if (!_.includes(this.decodeListFunc(), 'sort_on')) {
                 return true;
             }
             return false;
@@ -66546,7 +66546,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         sortedList: function sortedList(a) {
-            console.log('>>DO WE RUN??????????');
             return _.sortBy(a, function (el) {
                 return el.sort_on;
             });
@@ -66561,9 +66560,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.postToServer(ids);
         },
-        decodeMetaFunc: function decodeMetaFunc() {
-            console.log('>>hello!');
-            console.log(JSON.parse(this.list));
+        decodeListFunc: function decodeListFunc() {
             return JSON.parse(this.list);
         },
         pullFromServer: function pullFromServer() {

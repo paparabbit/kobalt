@@ -34,7 +34,7 @@
         methods: {
             // This will disable dragging if theres no sort on
             getStatus(){
-                if(!_.includes(this.decodeMetaFunc(), 'sort_on')){
+                if(!_.includes(this.decodeListFunc(), 'sort_on')){
                     return true;
                 }
                 return false;
@@ -50,7 +50,6 @@
 
 
             sortedList: function(a){
-                console.log('>>DO WE RUN??????????')
                 return _.sortBy(a, function(el){
                   return el.sort_on;
                 })
@@ -66,9 +65,7 @@
                 this.postToServer(ids)
             },
 
-            decodeMetaFunc(){
-                console.log('>>hello!')
-                console.log(JSON.parse(this.list));
+            decodeListFunc(){
                 return JSON.parse(this.list);
             },
 
