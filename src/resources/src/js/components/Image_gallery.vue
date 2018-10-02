@@ -67,6 +67,8 @@
             },
 
             decodeMetaFunc(){
+                console.log('>>hello!')
+                console.log(JSON.parse(this.meta));
                 return JSON.parse(this.meta);
             },
 

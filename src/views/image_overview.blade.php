@@ -4,8 +4,7 @@
         ref="image_gallery"
         resource_id = "{{ $resource_id }}"
         list = "{{ $images }}"
-        editimage_path = "{{ $editimage_path }}"
-        >
+        editimage_path = "{{ $editimage_path }}">
     </image-gallery>
 
     {{-- Add image button --}}
