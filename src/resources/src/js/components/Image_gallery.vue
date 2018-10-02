@@ -68,8 +68,8 @@
 
             decodeMetaFunc(){
                 console.log('>>hello!')
-                console.log(JSON.parse(this.meta));
-                return JSON.parse(this.meta);
+                console.log(JSON.parse(this.list));
+                return JSON.parse(this.list);
             },
 
             pullFromServer(){
