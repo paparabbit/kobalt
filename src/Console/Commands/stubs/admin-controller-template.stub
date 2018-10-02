@@ -17,7 +17,7 @@ class {{name}}Controller extends AdminController
 {
 //    use ImageGalleryTrait;
     /**
-     * ProjectsController constructor.
+     * {{name}}Controller constructor.
      * @param FormHelper $form_helper
      * @param {{name}} ${{resource}}
      */
@@ -75,7 +75,7 @@ class {{name}}Controller extends AdminController
      * @return \Illuminate\Http\Response
      */
     public function store({{name}}Request $request)
-     {
+    {
 
     }
 

@@ -33,8 +33,7 @@ class {{name}}Request extends FormRequest
 //            'title' => 'required|max:127',
 //            'slug' => 'required|max:127|unique:projects,slug,'.$current_id,
 //            'linkurl' => 'max:127',
-//            'computerimage_name' => 'required_with:computerimage_file|max:127|unique:projects,computerimage_name,'.$current_id,
-//            'computerimage_file' => 'image|max:1000',
+//            'image_file' => 'image|max:1000',
         ];
 
         return $rules;
