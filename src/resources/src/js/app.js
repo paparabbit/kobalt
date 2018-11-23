@@ -17,7 +17,6 @@ Vue.component('image-gallery-item', require('./components/Image_gallery_item.vue
 
 // ES6 js
 
-import TinyMce from './es6/tinymcesetup';
 import Lightbox from './es6/lightbox';
 import FlashMessages from './es6/flash_messages';
 import SelectTwo from './es6/select_two';
@@ -41,30 +40,17 @@ class AdminSystem{
 
 
     init(){
-        console.log('>>initing');
+        console.log('>>Admin up');
 
         this.flash_messages = new FlashMessages();
         this.submit_button = new SubmitButton();
 
-        // this.setupTinyMce();
         this.setupSelectTwo();
         this.setupDeleteButton();
         this.setupPermalinks();
         this.setupGalleryComponents();
         this.setupOverviewListComponents();
     }
-
-
-
-    setupTinyMce(){
-
-        if(document.querySelector('.rich-text') == null){
-            return false;
-        }
-
-        this.tinymce = new TinyMce();
-    }
-
 
 
     setupDeleteButton(){
