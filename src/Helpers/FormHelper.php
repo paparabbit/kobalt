@@ -47,6 +47,7 @@ class FormHelper
     public function generateEditForm($form_class, $resource, Array $data = [], Array $remove = [])
     {
         $route_helper = new RouteHelper();
+        $route_params = app('router')->getCurrentRoute()->parameters;
 
         $edit_form = $this->form($form_class,[
             'method' => 'PATCH',
