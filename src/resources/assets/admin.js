@@ -109,6 +109,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['list', 'resource_id', 'editimage_path'],
@@ -58831,7 +58832,7 @@ var render = function() {
     },
     _vm._l(_vm.passedList, function(item) {
       return _c("image-gallery-item", {
-        key: "item.id",
+        key: item.id,
         staticClass: "has-many-uniquely",
         attrs: {
           id: item.id,
@@ -58927,7 +58928,7 @@ var render = function() {
         },
         _vm._l(_vm.passedList, function(item) {
           return _c("overview-list-item", {
-            key: "item.id",
+            key: item.id,
             attrs: {
               item: item,
               meta: _vm.decodedMeta,

@@ -9,7 +9,7 @@
             </thead>
             <draggable :list="passedList" handle="{disabled:getStatus()}" tag="tbody" @end="endDrag" class="">
                 <overview-list-item v-for="item in passedList"
-                                    key="item.id"
+                                    :key="item.id"
                                     :item="item"
                                     :meta="decodedMeta"
                                     :edit_path="edit_path"

@@ -1,7 +1,8 @@
 <template>
 
     <draggable :list="passedList" handle="{disabled:getStatus()}" tag="ul" @end="endDrag" class="has-many-uniquely">
-        <image-gallery-item v-for="item in passedList" class="has-many-uniquely" key="item.id"
+        <image-gallery-item v-for="item in passedList" class="has-many-uniquely"
+            :key="item.id"
             :id=item.id
             :image_data=item.thumbnail_path
             :editimage_path="editimage_path">
