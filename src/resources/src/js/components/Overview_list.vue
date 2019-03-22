@@ -7,7 +7,7 @@
                     <th v-if="showable"></th>
                 </tr>
             </thead>
-            <draggable :list="passedList" :options="{disabled:getStatus()}" element="tbody" @end="endDrag" class="">
+            <draggable :list="passedList" handle="{disabled:getStatus()}" tag="tbody" @end="endDrag" class="">
                 <overview-list-item v-for="item in passedList"
                                     key="item.id"
                                     :item="item"

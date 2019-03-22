@@ -58824,8 +58824,8 @@ var render = function() {
       staticClass: "has-many-uniquely",
       attrs: {
         list: _vm.passedList,
-        options: { disabled: _vm.getStatus() },
-        element: "ul"
+        handle: "{disabled:getStatus()}",
+        tag: "ul"
       },
       on: { end: _vm.endDrag }
     },
@@ -58920,8 +58920,8 @@ var render = function() {
         {
           attrs: {
             list: _vm.passedList,
-            options: { disabled: _vm.getStatus() },
-            element: "tbody"
+            handle: "{disabled:getStatus()}",
+            tag: "tbody"
           },
           on: { end: _vm.endDrag }
         },
