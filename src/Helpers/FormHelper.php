@@ -35,21 +35,17 @@ class FormHelper
     }
 
 
-
     /**
      * Generates the edit form
      *
      * @param $form_class
+     * @param $resource
      * @param array $data
      * @param array $remove
      * @return mixed
      */
-    public function generateEditForm($form_class, Array $data = [], Array $remove = [])
+    public function generateEditForm($form_class, $resource, Array $data = [], Array $remove = [])
     {
-        // This is assuming the resource itself will be the last param which should be correct...
-
-        $route_params = app('router')->getCurrentRoute()->parameters;
-        $resource = array_last($route_params);
         $route_helper = new RouteHelper();
 
         $edit_form = $this->form($form_class,[
