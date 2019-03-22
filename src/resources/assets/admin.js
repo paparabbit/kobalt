@@ -71227,10 +71227,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 __webpack_require__(/*! ./bootstrap */ "./src/resources/src/js/bootstrap.js"); // Add vue components
 
 
-Vue.component('overview-list', __webpack_require__(/*! ./components/Overview_list.vue */ "./src/resources/src/js/components/Overview_list.vue"));
-Vue.component('overview-list-item', __webpack_require__(/*! ./components/Overview_list_item.vue */ "./src/resources/src/js/components/Overview_list_item.vue"));
-Vue.component('image-gallery', __webpack_require__(/*! ./components/Image_gallery.vue */ "./src/resources/src/js/components/Image_gallery.vue"));
-Vue.component('image-gallery-item', __webpack_require__(/*! ./components/Image_gallery_item.vue */ "./src/resources/src/js/components/Image_gallery_item.vue")); // ES6 js
+Vue.component('overview-list', __webpack_require__(/*! ./components/Overview_list.vue */ "./src/resources/src/js/components/Overview_list.vue").default);
+Vue.component('overview-list-item', __webpack_require__(/*! ./components/Overview_list_item.vue */ "./src/resources/src/js/components/Overview_list_item.vue").default);
+Vue.component('image-gallery', __webpack_require__(/*! ./components/Image_gallery.vue */ "./src/resources/src/js/components/Image_gallery.vue").default);
+Vue.component('image-gallery-item', __webpack_require__(/*! ./components/Image_gallery_item.vue */ "./src/resources/src/js/components/Image_gallery_item.vue").default); // ES6 js
 
 
 
@@ -72015,8 +72015,8 @@ var _default = function _default() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/Sites/Kobalt/src/resources/src/js/app.js */"./src/resources/src/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/Sites/Kobalt/src/resources/src/less/app.less */"./src/resources/src/less/app.less");
+__webpack_require__(/*! /Users/leigh/Sites/Kobalt/src/resources/src/js/app.js */"./src/resources/src/js/app.js");
+module.exports = __webpack_require__(/*! /Users/leigh/Sites/Kobalt/src/resources/src/less/app.less */"./src/resources/src/less/app.less");
 
 
 /***/ })

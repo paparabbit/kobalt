@@ -9,10 +9,10 @@ require('./bootstrap');
 
 // Add vue components
 
-Vue.component('overview-list', require('./components/Overview_list.vue'));
-Vue.component('overview-list-item', require('./components/Overview_list_item.vue'));
-Vue.component('image-gallery', require('./components/Image_gallery.vue'));
-Vue.component('image-gallery-item', require('./components/Image_gallery_item.vue'));
+Vue.component('overview-list', require('./components/Overview_list.vue').default);
+Vue.component('overview-list-item', require('./components/Overview_list_item.vue').default);
+Vue.component('image-gallery', require('./components/Image_gallery.vue').default);
+Vue.component('image-gallery-item', require('./components/Image_gallery_item.vue').default);
 
 
 // ES6 js
