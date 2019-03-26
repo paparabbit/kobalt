@@ -58825,11 +58825,7 @@ var render = function() {
     "draggable",
     {
       staticClass: "has-many-uniquely",
-      attrs: {
-        list: _vm.passedList,
-        handle: "{disabled:getStatus()}",
-        tag: "ul"
-      },
+      attrs: { list: _vm.passedList, disabled: _vm.getStatus(), tag: "ul" },
       on: { end: _vm.endDrag }
     },
     _vm._l(_vm.passedList, function(item) {
