@@ -74,7 +74,6 @@
 <script src="{{ asset('js/admin_extras.js') }}"></script>
 
 <script type="text/javascript">
-    //!TODO use axios??
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     });
