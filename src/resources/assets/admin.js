@@ -281,9 +281,11 @@ __webpack_require__.r(__webpack_exports__);
     // This will disable dragging if theres no sort on
     getStatus: function getStatus() {
       if (!lodash__WEBPACK_IMPORTED_MODULE_1___default.a.includes(this.decodeMetaFunc(), 'sort_on')) {
+        console.log('>>Returning true');
         return true;
       }
 
+      console.log('>>Returning false');
       return false;
     },
     endDrag: function endDrag(event) {

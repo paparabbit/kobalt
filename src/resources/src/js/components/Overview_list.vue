@@ -46,8 +46,10 @@
             // This will disable dragging if theres no sort on
             getStatus(){
                 if(!_.includes(this.decodeMetaFunc(), 'sort_on')){
+                    console.log('>>Returning true');
                     return true;
                 }
+                console.log('>>Returning false');
                 return false;
             },
 
