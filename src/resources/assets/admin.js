@@ -58923,7 +58923,7 @@ var render = function() {
         {
           attrs: {
             list: _vm.passedList,
-            options: { disabled: _vm.getStatus() },
+            disabled: "getStatus()",
             tag: "tbody"
           },
           on: { end: _vm.endDrag }
