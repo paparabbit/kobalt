@@ -2000,10 +2000,18 @@ __webpack_require__.r(__webpack_exports__);
       this.postToServer(ids);
     },
     postToServer: function postToServer(ids) {
-      axios.post(document.location.href + '/sort', {
-        'ids': ids.join(','),
-        'action': 'sortItems'
-      }); //                     .then(function (response) {
+      axios({
+        method: 'post',
+        url: document.location.href + '/sort',
+        params: {
+          'ids': ids.join(','),
+          'action': 'sortItems'
+        }
+      }); // axios.post(document.location.href + '/sort', {
+      //     'ids': ids.join(','),
+      //     'action': 'sortItems',
+      // })
+      //                     .then(function (response) {
       //                         console.log(response);
       //                     })
       //                     .catch(function (error) {
