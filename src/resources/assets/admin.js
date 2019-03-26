@@ -58921,11 +58921,7 @@ var render = function() {
       _c(
         "draggable",
         {
-          attrs: {
-            list: _vm.passedList,
-            handle: "{disabled:getStatus()}",
-            tag: "tbody"
-          },
+          attrs: { list: _vm.passedList, tag: "tbody" },
           on: { end: _vm.endDrag }
         },
         _vm._l(_vm.passedList, function(item) {
