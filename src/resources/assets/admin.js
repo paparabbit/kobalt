@@ -1949,11 +1949,9 @@ __webpack_require__.r(__webpack_exports__);
     // This will disable dragging if theres no sort on
     getStatus: function getStatus() {
       if (!lodash__WEBPACK_IMPORTED_MODULE_1___default.a.includes(this.decodeMetaFunc(), 'sort_on')) {
-        console.log('>>Returning true');
         return true;
       }
 
-      console.log('>>Returning false');
       return false;
     },
     endDrag: function endDrag(event) {
@@ -73080,8 +73078,8 @@ __webpack_require__(/*! event-emitter-es6 */ "./node_modules/event-emitter-es6/i
  */
 
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -73092,6 +73090,7 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  console.log('>>axios set');
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
