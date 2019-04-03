@@ -8,10 +8,10 @@
                 {{ convertStatus(item[meta_name]) }}
             </template>
             <template v-else-if="meta_name.toLowerCase().includes('date')">
-                {{ convertDate(item[meta_name].date) }}
+                {{ convertDate(item[meta_name]) }}
             </template>
             <template v-else-if="key.toLowerCase().includes('date')">
-                {{ convertDate(item[meta_name].date) }}
+                {{ convertDate(item[meta_name]) }}
             </template>
             <template v-else>
                 {{ item[meta_name] }}
