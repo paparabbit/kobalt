@@ -63434,7 +63434,7 @@ var render = function() {
               ? [
                   _vm._v(
                     "\n            " +
-                      _vm._s(_vm.convertDate(_vm.item[meta_name].date)) +
+                      _vm._s(_vm.convertDate(_vm.item[meta_name])) +
                       "\n        "
                   )
                 ]
@@ -63442,7 +63442,7 @@ var render = function() {
               ? [
                   _vm._v(
                     "\n            " +
-                      _vm._s(_vm.convertDate(_vm.item[meta_name].date)) +
+                      _vm._s(_vm.convertDate(_vm.item[meta_name])) +
                       "\n        "
                   )
                 ]
