@@ -404,6 +404,8 @@ __webpack_require__.r(__webpack_exports__);
       return this.edit_path + '/' + this.item.id;
     },
     convertDate: function convertDate(date) {
+      console.log('>>trying to convert date');
+      console.log(date);
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("Do MMM YYYY");
     },
     convertStatus: function convertStatus(status) {
