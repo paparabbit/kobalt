@@ -1,7 +1,7 @@
 {
     "name": "hoppermagic/kobalt",
     "description": "Set of reusable views and code to help building small scale Laravel backends",
-    "license": "mit",
+    "license": "MIT",
     "authors": [
         {
             "name": "leigh kayley",
