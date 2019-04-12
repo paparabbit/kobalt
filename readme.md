@@ -13,6 +13,7 @@ Hoppermagic\Kobalt\KobaltServiceProvider::class
 ````
 Package will automatically add the following but you might want to add these in config.app
 
+!TODO REMOVING.....
 !TODO DO We need laravel collective?????
 
 ````
@@ -48,20 +49,28 @@ Add the non-registration routes from Router.php (auth method) to web.php
 
 Remember to comment out the Auth::routes()
 
+From 5.8 it wont show register if the route doesn't exist.
+
 app.blade.php also contains a reference to the register route, so need to comment out
 
 ````
+// From 5.8?
+ 
+Auth::routes(['register', false]);
+
+OR
+
 //!TODO MAKE SURE YOU USE THE ONES FROM ROUTER.PHP
 // Authentication Routes...
-$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('login', 'Auth\LoginController@login');
-$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Password Reset Routes...
-$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 ````
 
 
@@ -96,49 +105,16 @@ Route::group([
         Route::resource('/story/{story}/storyimage', 'StoryImageController', [
             'except' => ['show','index'],
         ]);
-    }
-);
-
-````
-
-**Admin area api routes**
-
-A little bit pointless doing this, as we need the web middleware on the group
-NOT the api middleware so we could just stick these routes in the web area and
-not mess with the api stuff... So if you need proper api stuff on the front end don't do.
-
-RouteServiceProvider
-
-````
-protected function mapApiRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
-    }
-````
-
-Api.php
-
-Use these for ajax image sorting, list sorting
-
-````
-// A little bit pointless putting these in here as we need the CSRF token to validate
-// So essentially we still need the web middleware on the group
-
-Route::group([
-        'namespace' => 'Admin',
-        'prefix' => 'admin',
-    ]
-    ,function(){
-
+        
         // Stories ajax routes
         Route::post('story/{story}/edit/imageload', 'StoriesController@imageGalleryLoad');
         Route::post('story/{story}/edit/imagesort', 'StoriesController@imageGallerySort');
         Route::post('story/sort', 'StoriesController@overviewSort');
     }
 );
+
 ````
+
 
 **Make sure the following are pointing to the admin homepage**
 
@@ -163,6 +139,11 @@ ALSO ADD LATEST VERSION OF BOOTSTRAP CSS
 
 <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 <script src="{{ asset('js/admin.js') }}"></script>
+
+or
+
+<script src="{{ asset('js/admin.js') }}" defer></script>
+
 ````
 
 **View Composer**
@@ -182,7 +163,10 @@ admin images
 
 admin nav partial
 
-admin template - need to update this file with the latest structure from app.blade.php
+**admin template**
+
+need to update this file with the latest structure from app.blade.php
+Pull in  local version of tiny mce
 
 use force to overwrite
 

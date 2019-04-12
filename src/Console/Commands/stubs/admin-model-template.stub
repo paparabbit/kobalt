@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+//use Spatie\Image\Manipulations;
+//use Spatie\MediaLibrary\HasMedia\HasMedia;
 //use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-//use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
-//use Spatie\MediaLibrary\Media;
+//use Spatie\MediaLibrary\Models\Media;
 
-class {{name}} extends Model /*implements HasMediaConversions*/
+class {{name}} extends Model /*implements HasMedia*/
 {
     // use HasMediaTrait;
 
@@ -57,10 +58,10 @@ class {{name}} extends Model /*implements HasMediaConversions*/
 
 
 
-//    public static function getOverviewMeta()
-//    {
-//        return static::$overview_meta;
-//    }
+    public static function getOverviewMeta()
+    {
+        return static::$overview_meta;
+    }
 
 
 
@@ -69,22 +70,6 @@ class {{name}} extends Model /*implements HasMediaConversions*/
     | Mutators
     |--------------------------------------------------------------------------
     */
-
-
-    /**
-     * If the image name is blank (nothing uploaded) set column to NULL
-     * otherwise it will be set to blank '' and that will clash with other blanks
-     *
-     * @param $value
-     */
-//    public function setComputerImageNameAttribute($value)
-//    {
-//        if(empty($value)){
-//            $this->attributes['computerimage_name'] = NULL;
-//        }else{
-//            $this->attributes['computerimage_name'] = $value;
-//        }
-//    }
 
 
 
@@ -115,6 +100,7 @@ class {{name}} extends Model /*implements HasMediaConversions*/
     //        }
     //        return null;
     //    }
+
 
 
 
@@ -162,6 +148,14 @@ class {{name}} extends Model /*implements HasMediaConversions*/
 //    {
 //        return $this->testimonial;
 //    }
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Media Conversions
+    |--------------------------------------------------------------------------
+    */
 
 
 
