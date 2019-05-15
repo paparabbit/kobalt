@@ -17,8 +17,20 @@ mix
     .options({
         postCss: [
             require('autoprefixer')({
-                browsers: ["Last 2 versions", "Safari 8"],
+                browsers: ["Last 2 versions"],
                 cascade: false
             })
         ]
     })
+
+if (mix.inProduction()) {
+    mix.options({
+        terser: {
+            terserOptions: {
+                compress: {
+                    drop_console: true
+                }
+            }
+        }
+    });
+}
