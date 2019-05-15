@@ -9,28 +9,15 @@ If it doesn't auto discover
 
 ````
 Hoppermagic\Kobalt\KobaltServiceProvider::class
-
 ````
 Package will automatically add the following but you might want to add these in config.app
 
-!TODO REMOVING.....
-!TODO DO We need laravel collective?????
-
 ````
-// Might need to add tinker too
-Laravel\Tinker\TinkerServiceProvider::class,
-
 Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
 Laracasts\Flash\FlashServiceProvider::class,
 
 'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
 'Flash'	=> Laracasts\Flash\Flash::class,
-````
-
-
-//!TODONeed to add this to all build forms
-````
-$this->addCustomField('unescaped-static', 'Hoppermagic\Kobalt\Forms\Fields\UnescapedStaticType');
 ````
 
 
@@ -135,15 +122,12 @@ protected $redirectTo = '/admin/overviewpage'; // Admin landing page
 app.blade.php
 
 ````
-ALSO ADD LATEST VERSION OF BOOTSTRAP CSS
-
 <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 <script src="{{ asset('js/admin.js') }}"></script>
 
 or
 
 <script src="{{ asset('js/admin.js') }}" defer></script>
-
 ````
 
 **View Composer**
@@ -201,6 +185,14 @@ php artisan make:ko-form Rabbit
 //!TODO config/app.php
 
 //!TODO Notes about editable, deleteable, addable
+
+**Forms**
+
+Form Builder Static type is now escaped, so if you need to pass a view in need to use unescaped static. 
+
+````
+$this->addCustomField('unescaped-static', 'Hoppermagic\Kobalt\Forms\Fields\UnescapedStaticType');
+````
 
 Form fields on desktop will be 60% width unless
 

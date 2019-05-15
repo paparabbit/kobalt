@@ -8,6 +8,8 @@ class {{name}}Form extends Form
 {
     public function buildForm()
     {
+//      $this->addCustomField('unescaped-static', 'Hoppermagic\Kobalt\Forms\Fields\UnescapedStaticType');
+
         $this
             ->add('title', 'text', [
                 'label' => 'Project title',
