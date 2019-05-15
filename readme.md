@@ -166,6 +166,12 @@ Publish all admin views
 php artisan vendor:publish --provider="Hoppermagic\Kobalt\KobaltServiceProvider" --tag=admin-views --force
 ````
 
+Publish just the css and js
+
+````
+php artisan vendor:publish --provider="Hoppermagic\Kobalt\KobaltServiceProvider" --tag=css-js --force
+````
+
 If you need to recompile the js/css
 
 ````
