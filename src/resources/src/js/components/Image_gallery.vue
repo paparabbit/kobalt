@@ -35,7 +35,9 @@
         methods: {
             // This will disable dragging if theres no sort on
             getStatus(){
-                if(!_.includes(this.decodeListFunc(), 'sort_on')){
+                let a = _.find(this.decodeListFunc(), 'sort_on')
+
+                if(!_.isObject(a)){
                     return true;
                 }
                 return false;
