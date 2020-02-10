@@ -25,5 +25,8 @@
     "vue": "2.6.10",
     "vue-template-compiler": "2.6.10",
     "vuedraggable": "^2.23.2"
-  }
+  },
+  "browserslist": [
+    "Last 2 versions"
+  ]
 }
