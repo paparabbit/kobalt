@@ -24,7 +24,8 @@ if (mix.inProduction()) {
                 compress: {
                     drop_console: true
                 }
-            }
+            },
+            extractComments: false
         }
     });
 }
