@@ -13,7 +13,7 @@
     "bootstrap": "^4.4.1",
     "cross-env": "^5.2.1",
     "event-emitter-es6": "^1.1.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "laravel-mix": "^5.0.0",
     "less": "^3.11.0",
     "less-loader": "^4.1.0",
