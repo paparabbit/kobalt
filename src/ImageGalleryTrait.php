@@ -20,7 +20,7 @@ trait ImageGalleryTrait
         // Resource should be the last param....
 
         $route_params = app('router')->getCurrentRoute()->parameters;
-        $resource = array_last($route_params);
+        $resource = Arr::last($route_params);
         $route_helper = new RouteHelper();
 
         return view('kobalt::image_overview')->with(

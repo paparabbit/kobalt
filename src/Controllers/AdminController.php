@@ -34,7 +34,7 @@ abstract class AdminController extends Controller
         // This will work based on the global so long as its not set on the overview method
 
         if(isset($this->addable)) {
-            if(!array_has($settings, 'addable')){
+            if(!Arr::has($settings, 'addable')){
 
                 $arr = ['addable' => false];
                 $settings = array_merge($settings + $arr);
@@ -52,7 +52,7 @@ abstract class AdminController extends Controller
         // This will work based on the global so long as its not set on the overview method
 
         if(isset($this->editable)) {
-            if(!array_has($settings, 'editable')){
+            if(!Arr::has($settings, 'editable')){
 
                 $arr = ['editable' => false];
                 $settings = array_merge($settings + $arr);
@@ -63,7 +63,7 @@ abstract class AdminController extends Controller
         // Add a View button that shows an uneditable form
 
         if(isset($this->showable)) {
-            if(!array_has($settings, 'showable')){
+            if(!Arr::has($settings, 'showable')){
 
                 $arr = ['showable' => true];
                 $settings = array_merge($settings + $arr);
