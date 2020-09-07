@@ -209,7 +209,7 @@ abstract class AdminController extends Controller
     {
         // Gets the resource through the current route, could just pass it in if needs be
         $route_params = app('router')->getCurrentRoute()->parameters;
-        $resource = array_last($route_params);
+        $resource = Arr::last($route_params);
 
         $route_helper = new RouteHelper();
 
