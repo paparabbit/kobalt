@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,8 +13,13 @@ let mix = require('laravel-mix');
 
 mix
     .js('src/resources/src/js/app.js', 'src/resources/assets/admin.js')
-    .less('src/resources/src/less/app.less', 'src/resources/assets/admin.css')
-    .options({
+    .vue({
+        version: 2
+    })
+    .less('src/resources/src/less/app.less', 'src/resources/assets/admin.css',{
+        lessOptions: {
+            math: 'always'
+        }
     })
 
 if (mix.inProduction()) {

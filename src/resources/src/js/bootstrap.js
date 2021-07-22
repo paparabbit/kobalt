@@ -20,7 +20,7 @@ try {
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
+window.Vue = require('vue').default;
 
 //For Vue draggable component
 require('vuedraggable');
