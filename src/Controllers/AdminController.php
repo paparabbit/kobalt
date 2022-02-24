@@ -36,7 +36,7 @@ abstract class AdminController extends Controller
         // This will work based on the global so long as its not set on the overview method
 
         if(isset($this->addable)) {
-            if(!array_has($settings, 'addable')){
+            if(!Arr::has($settings, 'addable')){
 
                 $arr = ['addable' => false];
                 $settings = array_merge($settings + $arr);
@@ -47,7 +47,7 @@ abstract class AdminController extends Controller
         // This will work based on the global so long as its not set on the overview method
 
         if(isset($this->editable)) {
-            if(!array_has($settings, 'editable')){
+            if(!Arr::has($settings, 'editable')){
 
                 $arr = ['editable' => false];
                 $settings = array_merge($settings + $arr);
@@ -199,7 +199,7 @@ abstract class AdminController extends Controller
     {
         // Gets the resource through the current route, could just pass it in if needs be
         $route_params = app('router')->getCurrentRoute()->parameters;
-        $resource = array_last($route_params);
+        $resource = Arr::last($route_params);
 
         $route_helper = new RouteHelper();
 

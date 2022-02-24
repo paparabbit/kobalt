@@ -14,7 +14,7 @@
                 <a href="{{ $create_path }}" class="btn btn-primary pull-right">Add a new {{ $title }}</a>
             @endif
 
-            <h1>List {{ str_plural( $title) }}</h1>
+            <h1>List {{ Str::plural( $title) }}</h1>
         </div>
 
         {{-- Allow a message block of html to be passed to the page --}}

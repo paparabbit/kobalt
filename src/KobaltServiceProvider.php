@@ -132,6 +132,6 @@ class KobaltServiceProvider extends ServiceProvider
      */
     private function aliasExists($alias)
     {
-        return array_key_exists($alias, AliasLoader::getInstance()->getAliases());
+        return property_exists($alias, AliasLoader::getInstance()->getAliases());
     }
 }
