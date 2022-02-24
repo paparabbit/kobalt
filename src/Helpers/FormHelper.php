@@ -2,6 +2,7 @@
 
 namespace Hoppermagic\Kobalt\Helpers;
 
+use Illuminate\Support\Arr;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class FormHelper

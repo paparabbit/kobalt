@@ -4,6 +4,7 @@ namespace Hoppermagic\Kobalt;
 
 
 use Hoppermagic\Kobalt\Helpers\RouteHelper;
+use Illuminate\Support\Arr;
 
 trait ImageGalleryTrait
 {
