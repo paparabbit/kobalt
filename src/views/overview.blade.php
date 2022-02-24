@@ -32,8 +32,8 @@
                     meta = "{{ json_encode($meta) }}"
                     list = "{{ json_encode($data) }}"
                     edit_path = "{{ $edit_path }}"
-                    editable = "{{ $editable or true }}"
-                    sort_column = "{{ $sort_column or '' }}">
+                    editable = "{{ $editable ?? true }}"
+                    sort_column = "{{ $sort_column ?? '' }}">
                 </overview-list>
             </div>
 
